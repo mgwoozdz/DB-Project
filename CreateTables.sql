@@ -1,18 +1,23 @@
+-- Products
 IF OBJECT_ID('dbo.Products', 'U') IS NOT NULL
     DROP TABLE dbo.Products
 GO
 
+-- Sellers
 IF OBJECT_ID('dbo.Sellers', 'U') IS NOT NULL
     DROP TABLE dbo.Sellers
 GO
 
+-- Orders
 IF OBJECT_ID('dbo.Orders', 'U') IS NOT NULL
     DROP TABLE dbo.Orders
 GO
 
+-- Customers
 IF OBJECT_ID('dbo.Customers', 'U') IS NOT NULL
     DROP TABLE dbo.Customers
 GO
+
 
 -- Sellers
 CREATE TABLE dbo.Sellers
