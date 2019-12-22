@@ -22,7 +22,7 @@ GO
 -- Sellers
 CREATE TABLE dbo.Sellers
     ( 
-        [SellerID] INT IDENTITY(1,1)
+        [SellerID] INT IDENTITY(1,1) PRIMARY KEY NOT NULL
         , [SellerName] NVARCHAR(40) NOT NULL
         , CONSTRAINT PK_Sellers PRIMARY KEY (SellerID)
     )
@@ -31,7 +31,7 @@ CREATE TABLE dbo.Sellers
 -- Customers
 CREATE TABLE dbo.Customers
     ( 
-        [CustomerID] INT IDENTITY(1,1)
+        [CustomerID] INT IDENTITY(1,1) PRIMARY KEY NOT NULL
         , [CustomerName] NVARCHAR(40) NOT NULL
     )
 ;
@@ -52,7 +52,7 @@ CREATE TABLE dbo.Products
 -- Orders
 CREATE TABLE dbo.Orders
     ( 
-        [OrderID] INT IDENTITY(1,1) PRIMARY KEY
+        [OrderID] INT IDENTITY(1,1) PRIMARY KEY NOT NULL
         , [ProductID] INT NOT NULL
         , CONSTRAINT FK_Orders_Products FOREIGN KEY (ProductID)
           REFERENCES dbo.Products (ProductID)
