@@ -1,14 +1,19 @@
-USE master
+USE master;
 GO
 
 IF DB_ID('TestDB') IS NOT NULL
-    DROP DATABASE TestDB
+    DROP DATABASE TestDB;
 GO
 
-CREATE DATABASE TestDB
+CREATE DATABASE TestDB;
 GO
 
-USE TestDB
+USE TestDB;
+GO
+
+-- Reviews
+IF OBJECT_ID('dbo.Reviews', 'U') IS NOT NULL
+    DROP TABLE dbo.Reviews
 GO
 
 -- OrderDetails
@@ -113,7 +118,7 @@ CREATE TABLE dbo.OrderDetails
     )
 ;
 
---Categories
+-- Categories
 CREATE TABLE dbo.Categories
     (
         [CategoryID] INT PRIMARY KEY IDENTITY(1,1)
@@ -123,7 +128,7 @@ CREATE TABLE dbo.Categories
     
 ;
 
---Suppliers
+-- Suppliers
 CREATE TABLE dbo.Suppliers
     (
         [SupplierID] INT PRIMARY KEY IDENTITY(1,1)
@@ -134,5 +139,27 @@ CREATE TABLE dbo.Suppliers
         , [PostalCode] NVARCHAR(10)
         , [EmailAddress] NVARCHAR(30)
         , [Phone] NVARCHAR(20)
+    )
+;
+
+-- Reviews
+CREATE TABLE dbo.Reviews
+    (
+        [ReviewID] INT NOT NULL
+        , CONSTRAINT PK_Reviews PRIMARY KEY (ReviewID)
+        , [CustomerID] INT
+        , CONSTRAINT FK_Reviews_Customers FOREIGN KEY (CustomerID)
+          REFERENCES dbo.Customers (CustomerID)
+          ON DELETE CASCADE
+          ON UPDATE CASCADE
+        , [ProductID] INT
+        , CONSTRAINT FK_Reviews_Products FOREIGN KEY (ProductID)
+          REFERENCES dbo.Products (ProductID)
+          ON DELETE CASCADE
+          ON UPDATE CASCADE
+        , [Content] NTEXT DEFAULT NULL
+        , [Rating] TINYINT NOT NULL
+        , CONSTRAINT CK_Reviews_Rating CHECK 
+          (Rating >= 1 AND Rating <= 5)   
     )
 ;
