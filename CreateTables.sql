@@ -82,6 +82,3 @@ CREATE TABLE dbo.OrderDetails
           ON UPDATE CASCADE
     )
 ;
-
--- test
---test2
