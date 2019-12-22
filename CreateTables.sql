@@ -1,7 +1,20 @@
--- Sellers
+IF OBJECT_ID('dbo.Products', 'U') IS NOT NULL
+    DROP TABLE dbo.Products
+GO
+
 IF OBJECT_ID('dbo.Sellers', 'U') IS NOT NULL
     DROP TABLE dbo.Sellers
 GO
+
+IF OBJECT_ID('dbo.Orders', 'U') IS NOT NULL
+    DROP TABLE dbo.Orders
+GO
+
+IF OBJECT_ID('dbo.Customers', 'U') IS NOT NULL
+    DROP TABLE dbo.Customers
+GO
+
+-- Sellers
 CREATE TABLE dbo.Sellers
     ( 
         [SellerID] INT IDENTITY(1,1)
@@ -11,9 +24,6 @@ CREATE TABLE dbo.Sellers
 ;
 
 -- Orders
-IF OBJECT_ID('dbo.Orders', 'U') IS NOT NULL
-    DROP TABLE dbo.Orders
-GO
 CREATE TABLE dbo.Orders
     ( 
         [OrderID] INT IDENTITY(1,1)
@@ -21,9 +31,6 @@ CREATE TABLE dbo.Orders
 ;
 
 -- Customers
-IF OBJECT_ID('dbo.Customers', 'U') IS NOT NULL
-    DROP TABLE dbo.Customers
-GO
 CREATE TABLE dbo.Customers
     ( 
         [CustomerID] INT IDENTITY(1,1)
@@ -32,9 +39,6 @@ CREATE TABLE dbo.Customers
 ;
 
 -- Products
-IF OBJECT_ID('dbo.Products', 'U') IS NOT NULL
-    DROP TABLE dbo.Products
-GO
 CREATE TABLE dbo.Products
     ( 
         [ProductID] INT IDENTITY(1,1)
