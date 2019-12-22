@@ -36,9 +36,9 @@ CREATE TABLE dbo.Sellers
 -- Customers
 CREATE TABLE dbo.Customers
     ( 
-        [CustomerID] INT IDENTITY(1,1)NOT NULL
+        [CustomerID] INT IDENTITY(1,1) NOT NULL
         , CONSTRAINT PK_Customers PRIMARY KEY (CustomerID) 
-        , [CustomerName] NVARCHAR(40) NOT NULL
+        , [Name] NVARCHAR(40) NOT NULL
     )
 ;
 
@@ -61,6 +61,11 @@ CREATE TABLE dbo.Orders
     ( 
         [OrderID] INT IDENTITY(1,1) NOT NULL
         , CONSTRAINT PK_Orders PRIMARY KEY (OrderID)
+        , [CustomerID] INT
+        , CONSTRAINT FK_Orders_Customers FOREIGN KEY
+          REFERENCES dbo.Customers (CustomerID)
+          ON DELETE CASCADE
+          ON UPDATE CASCADE
         , [OrderDate] DATETIME NOT NULL
         , [ShippedDate] DATETIME NOT NULL
     )
@@ -70,7 +75,6 @@ CREATE TABLE dbo.Orders
 CREATE TABLE dbo.OrderDetails
     ( 
         [OrderID] INT NOT NULL
-        , CONSTRAINT PK_OrderDetails PRIMARY KEY (OrderID)
         , CONSTRAINT FK_OrderDetails_Orders FOREIGN KEY (OrderID)
           REFERENCES dbo.Orders (OrderID)
           ON DELETE CASCADE
@@ -80,5 +84,9 @@ CREATE TABLE dbo.OrderDetails
           REFERENCES dbo.Products (ProductID)
           ON DELETE CASCADE
           ON UPDATE CASCADE
+        , [UnitPrice] MONEY NOT NULL
+        , [Quantity] INT NOT NULL
+        , [Discount] REAL NOT NULL
+        , CONSTRAINT PK_OrderDetails PRIMARY KEY (OrderID, ProductID)
     )
 ;
