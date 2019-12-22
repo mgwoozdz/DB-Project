@@ -23,6 +23,15 @@ IF OBJECT_ID('dbo.Sellers', 'U') IS NOT NULL
     DROP TABLE dbo.Sellers
 GO
 
+--Categories
+IF OBJECT_ID('dbo.Categories', 'U') IS NOT NULL
+    DROP TABLE dbo.Categories
+GO
+
+--Suppliers
+IF OBJECT_ID('dbo.Suppliers', 'U') IS NOT NULL
+    DROP TABLE dbo.Suppliers
+GO
 
 -- Sellers
 CREATE TABLE dbo.Sellers
@@ -90,3 +99,33 @@ CREATE TABLE dbo.OrderDetails
         , CONSTRAINT PK_OrderDetails PRIMARY KEY (OrderID, ProductID)
     )
 ;
+
+--Categories
+CREATE TABLE dbo.Categories
+    (
+        [CategoryID] INT PRIMARY KEY IDENTITY(1,1),
+        [CategoryName] NVARCHAR(20) NOT NULL,
+        [Description] NTEXT
+        ON DELETE CASCADE
+        ON UPDATE CASCADE
+    )
+    
+;
+
+--Suppliers
+CREATE TABLE dbo.Suppliers
+    (
+        [SupplierID] INT PRIMARY KEY IDENTITY(1,1),
+        [SupplierName] NVARCHAR(40) NOT NULL,
+        [Country] NVARCHAR(20),
+        [City] NVARCHAR(20),
+        [Address] NVARCHAR(40),
+        [PostalCode] NVARCHAR(10),
+        [EmailAddress] NVARCHAR(30),
+        [Phone] NVARCHAR(20)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE
+
+
+    )
+
