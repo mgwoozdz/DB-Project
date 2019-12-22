@@ -11,39 +11,19 @@ GO
 USE TestDB;
 GO
 
+-- Employees
+IF OBJECT_ID('dbo.Employees', 'U') IS NOT NULL
+    DROP TABLE dbo.Employees
+GO
+
+-- Departments
+IF OBJECT_ID('dbo.Departments', 'U') IS NOT NULL
+    DROP TABLE dbo.Departments
+GO
+
 -- Reviews
 IF OBJECT_ID('dbo.Reviews', 'U') IS NOT NULL
     DROP TABLE dbo.Reviews
-GO
-
--- OrderDetails
-IF OBJECT_ID('dbo.OrderDetails', 'U') IS NOT NULL
-    DROP TABLE dbo.OrderDetails
-GO
-
--- Orders
-IF OBJECT_ID('dbo.Orders', 'U') IS NOT NULL
-    DROP TABLE dbo.Orders
-GO
-
--- Products
-IF OBJECT_ID('dbo.Products', 'U') IS NOT NULL
-    DROP TABLE dbo.Products
-GO
-
--- Customers
-IF OBJECT_ID('dbo.Customers', 'U') IS NOT NULL
-    DROP TABLE dbo.Customers
-GO
-
--- Sellers
-IF OBJECT_ID('dbo.Sellers', 'U') IS NOT NULL
-    DROP TABLE dbo.Sellers
-GO
-
---Categories
-IF OBJECT_ID('dbo.Categories', 'U') IS NOT NULL
-    DROP TABLE dbo.Categories
 GO
 
 --Suppliers
@@ -51,14 +31,30 @@ IF OBJECT_ID('dbo.Suppliers', 'U') IS NOT NULL
     DROP TABLE dbo.Suppliers
 GO
 
--- Sellers
-CREATE TABLE dbo.Sellers
-    ( 
-        [SellerID] INT IDENTITY(1,1)
-        , CONSTRAINT PK_Sellers PRIMARY KEY (SellerID)
-        , [SellerName] NVARCHAR(40) NOT NULL
-    )
-;
+-- OrderDetails
+IF OBJECT_ID('dbo.OrderDetails', 'U') IS NOT NULL
+    DROP TABLE dbo.OrderDetails
+GO
+
+-- Products
+IF OBJECT_ID('dbo.Products', 'U') IS NOT NULL
+    DROP TABLE dbo.Products
+GO
+
+-- Orders
+IF OBJECT_ID('dbo.Orders', 'U') IS NOT NULL
+    DROP TABLE dbo.Orders
+GO
+
+--Categories
+IF OBJECT_ID('dbo.Categories', 'U') IS NOT NULL
+    DROP TABLE dbo.Categories
+GO
+
+-- Customers
+IF OBJECT_ID('dbo.Customers', 'U') IS NOT NULL
+    DROP TABLE dbo.Customers
+GO
 
 -- Customers
 CREATE TABLE dbo.Customers
@@ -69,15 +65,45 @@ CREATE TABLE dbo.Customers
     )
 ;
 
+-- Categories
+CREATE TABLE dbo.Categories
+    (
+        [CategoryID] INT IDENTITY(1,1) NOT NULL
+        , CONSTRAINT PK_Categories PRIMARY KEY (CategoryID)
+        , [CategoryName] NVARCHAR(20) NOT NULL
+        , [Description] NTEXT
+    )   
+;
+
+-- Suppliers
+CREATE TABLE dbo.Suppliers
+    (
+        [SupplierID] INT IDENTITY(1,1) NOT NULL
+        , CONSTRAINT PK_Suppliers PRIMARY KEY (SupplierID)
+        , [SupplierName] NVARCHAR(40) NOT NULL
+        , [Country] NVARCHAR(20)
+        , [City] NVARCHAR(20)
+        , [Address] NVARCHAR(40)
+        , [PostalCode] NVARCHAR(10)
+        , [EmailAddress] NVARCHAR(30)
+        , [Phone] NVARCHAR(20)
+    )
+;
+
 -- Products
 CREATE TABLE dbo.Products
     ( 
         [ProductID] INT IDENTITY(1,1) NOT NULL
         , CONSTRAINT PK_Products PRIMARY KEY (ProductID) 
         , [ProductName] NVARCHAR(40) NOT NULL
-        , [SellerID] INT
-        , CONSTRAINT FK_Products_Sellers FOREIGN KEY (SellerID)
-          REFERENCES dbo.Sellers (SellerID)
+        , [SupplierID] INT
+        , CONSTRAINT FK_Products_Suppliers FOREIGN KEY (SupplierID)
+          REFERENCES dbo.Suppliers (SupplierID)
+          ON DELETE CASCADE
+          ON UPDATE CASCADE
+        , [CategoryID] INT
+        , CONSTRAINT FK_Products_Categories FOREIGN KEY (CategoryID)
+          REFERENCES dbo.Categories (CategoryID)
           ON DELETE CASCADE
           ON UPDATE CASCADE
     )
@@ -118,30 +144,6 @@ CREATE TABLE dbo.OrderDetails
     )
 ;
 
--- Categories
-CREATE TABLE dbo.Categories
-    (
-        [CategoryID] INT PRIMARY KEY IDENTITY(1,1)
-        , [CategoryName] NVARCHAR(20) NOT NULL
-        , [Description] NTEXT
-    )
-    
-;
-
--- Suppliers
-CREATE TABLE dbo.Suppliers
-    (
-        [SupplierID] INT PRIMARY KEY IDENTITY(1,1)
-        , [SupplierName] NVARCHAR(40) NOT NULL
-        , [Country] NVARCHAR(20)
-        , [City] NVARCHAR(20)
-        , [Address] NVARCHAR(40)
-        , [PostalCode] NVARCHAR(10)
-        , [EmailAddress] NVARCHAR(30)
-        , [Phone] NVARCHAR(20)
-    )
-;
-
 -- Reviews
 CREATE TABLE dbo.Reviews
     (
@@ -161,5 +163,27 @@ CREATE TABLE dbo.Reviews
         , [Rating] TINYINT NOT NULL
         , CONSTRAINT CK_Reviews_Rating CHECK 
           (Rating >= 1 AND Rating <= 5)   
+    )
+;
+
+-- Departments
+CREATE TABLE dbo.Departments
+    (
+        [DepartmentID] TINYINT NOT NULL
+        , CONSTRAINT PK_Departments PRIMARY KEY (DepartmentID)
+        , [DepartmentName] VARCHAR(20) NOT NULL
+    )
+ ;
+
+-- Employees
+CREATE TABLE dbo.Employees
+    (
+        [EmployeeID] INT IDENTITY(1,1) NOT NULL
+        , CONSTRAINT PK_Employees PRIMARY KEY (EmployeeID)
+        , [Name] NVARCHAR(20) NOT NULL
+        , [Title] NVARCHAR(10) NULL
+        , [DepartmentID] TINYINT NOT NULL
+        , CONSTRAINT FK_Employees_Departments FOREIGN KEY (DepartmentID)
+          REFERENCES dbo.Departments (DepartmentID)
     )
 ;
