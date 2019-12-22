@@ -71,7 +71,7 @@ CREATE TABLE dbo.Orders
         [OrderID] INT IDENTITY(1,1) NOT NULL
         , CONSTRAINT PK_Orders PRIMARY KEY (OrderID)
         , [CustomerID] INT
-        , CONSTRAINT FK_Orders_Customers FOREIGN KEY
+        , CONSTRAINT FK_Orders_Customers FOREIGN KEY (CustomerID)
           REFERENCES dbo.Customers (CustomerID)
           ON DELETE CASCADE
           ON UPDATE CASCADE
@@ -103,11 +103,9 @@ CREATE TABLE dbo.OrderDetails
 --Categories
 CREATE TABLE dbo.Categories
     (
-        [CategoryID] INT PRIMARY KEY IDENTITY(1,1),
-        [CategoryName] NVARCHAR(20) NOT NULL,
-        [Description] NTEXT
-        ON DELETE CASCADE
-        ON UPDATE CASCADE
+        [CategoryID] INT PRIMARY KEY IDENTITY(1,1)
+        , [CategoryName] NVARCHAR(20) NOT NULL
+        , [Description] NTEXT        
     )
     
 ;
@@ -115,17 +113,13 @@ CREATE TABLE dbo.Categories
 --Suppliers
 CREATE TABLE dbo.Suppliers
     (
-        [SupplierID] INT PRIMARY KEY IDENTITY(1,1),
-        [SupplierName] NVARCHAR(40) NOT NULL,
-        [Country] NVARCHAR(20),
-        [City] NVARCHAR(20),
-        [Address] NVARCHAR(40),
-        [PostalCode] NVARCHAR(10),
-        [EmailAddress] NVARCHAR(30),
-        [Phone] NVARCHAR(20)
-        ON DELETE CASCADE
-        ON UPDATE CASCADE
-
-
+        [SupplierID] INT PRIMARY KEY IDENTITY(1,1)
+        , [SupplierName] NVARCHAR(40) NOT NULL
+        , [Country] NVARCHAR(20)
+        , [City] NVARCHAR(20)
+        , [Address] NVARCHAR(40)
+        , [PostalCode] NVARCHAR(10)
+        , [EmailAddress] NVARCHAR(30)
+        , [Phone] NVARCHAR(20)
     )
-
+;
