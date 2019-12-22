@@ -1,3 +1,16 @@
+USE master
+GO
+
+IF DB_ID('TestDB') IS NOT NULL
+    DROP DATABASE TestDB
+GO
+
+CREATE DATABASE TestDB
+GO
+
+USE TestDB
+GO
+
 -- OrderDetails
 IF OBJECT_ID('dbo.OrderDetails', 'U') IS NOT NULL
     DROP TABLE dbo.OrderDetails
@@ -105,7 +118,7 @@ CREATE TABLE dbo.Categories
     (
         [CategoryID] INT PRIMARY KEY IDENTITY(1,1)
         , [CategoryName] NVARCHAR(20) NOT NULL
-        , [Description] NTEXT        
+        , [Description] NTEXT
     )
     
 ;
