@@ -28,13 +28,6 @@ CREATE TABLE dbo.Sellers
     )
 ;
 
--- Orders
-CREATE TABLE dbo.Orders
-    ( 
-        [OrderID] INT IDENTITY(1,1)
-    )
-;
-
 -- Customers
 CREATE TABLE dbo.Customers
     ( 
@@ -46,12 +39,25 @@ CREATE TABLE dbo.Customers
 -- Products
 CREATE TABLE dbo.Products
     ( 
-        [ProductID] INT IDENTITY(1,1)
+        [ProductID] INT IDENTITY(1,1) PRIMARY KEY NOT NULL
         , [ProductName] NVARCHAR(40) NOT NULL
         , [SellerID] INT
         , CONSTRAINT FK_1 FOREIGN KEY (SellerID)
           REFERENCES dbo.Sellers (SellerID)
           ON DELETE CASCADE
           ON UPDATE CASCADE
+    )
+;
+
+-- Orders
+CREATE TABLE dbo.Orders
+    ( 
+        [OrderID] INT IDENTITY(1,1) PRIMARY KEY
+        , [ProductID] INT NOT NULL
+        , CONSTRAINT FK_Orders_Products FOREIGN KEY (ProductID)
+          REFERENCES dbo.Products (ProductID)
+          ON DELETE CASCADE
+          ON UPDATE CASCADE
+        , 
     )
 ;
