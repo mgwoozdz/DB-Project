@@ -182,8 +182,7 @@ CREATE TABLE dbo.Employees
     (
         [EmployeeID] INT IDENTITY(1,1) NOT NULL
         , CONSTRAINT PK_Employees PRIMARY KEY (EmployeeID)
-        , [Name] NVARCHAR(20) NOT NULL
-        , [Title] NVARCHAR(10) NULL
+        , [Name] NVARCHAR(40) NOT NULL
         , [DepartmentID] TINYINT NOT NULL
         , CONSTRAINT FK_Employees_Departments FOREIGN KEY (DepartmentID)
           REFERENCES dbo.Departments (DepartmentID)
@@ -195,20 +194,28 @@ PRINT 'Tables created successfully.'
 DECLARE @FillTables BIT = 'true'
 IF @FillTables = 'true' BEGIN
 
-    SET NOCOUNT ON
-
     INSERT INTO dbo.Departments VALUES
       (1, 'Management')
     , (2, 'IT')
     , (3, 'Sales')
 
+    INSERT INTO dbo.Employees VALUES
+	  ('Eryk Sorensen', 2)
+	, ('Elif Jensen', 3)
+	, ('Eliza Moller', 2)
+	, ('Elisabeth Christiansen', 1)
+	, ('Edward Larsen', 1)
+	, ('Emanuel Poulsen', 3)
+	, ('Eugeniusz Johansen', 3)
+	, ('Eryk Pedersen', 3)
+	, ('Elif Olsen', 2)
+	, ('Elzna Jorgensen', 1)
+	;
 
-    -- Customers
     INSERT INTO dbo.Customers
     VALUES
     ('Jan Nowak')
-
-    SET NOCOUNT OFF
+    ;
 
     PRINT 'Tables filled.'
 END

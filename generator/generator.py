@@ -45,9 +45,20 @@ def generateNames(personel_type: chr, number: int):
 
 def generateSQL_employees(number: int, departments: int):
     """Generates ready-to-paste rows of employees, returned in a list"""
-    employeesSQL = ['(\'' + e for e in generateNames('e', number)]
-    employeesSQL = [ e + '\')' for e in employeesSQL]
+
+    employeesSQL = generateNames('e', number)
+
+    # add opening partnthesis and 's between strings
+    employeesSQL = ['(\'' + e + '\'' for e in employeesSQL]
+
+    # add department number
+    employeesSQL = [e + ', ' + str(random.randint(1, departments))
+                    for e in employeesSQL]
+
+    # add closing partnthesis
+    employeesSQL = [e + ')' for e in employeesSQL]
     return employeesSQL
 
-for e in generateSQL_employees(10, 5):
-    print(e)
+
+for e in generateSQL_employees(10, 3):
+    print(',', e)
