@@ -11,6 +11,8 @@ GO
 USE TestDB;
 GO
 
+PRINT 'Database created successfully.'
+
 -- Employees
 IF OBJECT_ID('dbo.Employees', 'U') IS NOT NULL
     DROP TABLE dbo.Employees
@@ -187,3 +189,20 @@ CREATE TABLE dbo.Employees
           REFERENCES dbo.Departments (DepartmentID)
     )
 ;
+
+PRINT 'Tables created successfully.'
+
+DECLARE @FillTables BIT = 'true'
+IF @FillTables = 'true' BEGIN
+
+    SET NOCOUNT ON
+
+    -- Customers
+    INSERT INTO dbo.Customers
+    VALUES
+    ('Jan Nowak')
+
+    SET NOCOUNT OFF
+
+    PRINT 'Tables filled.'
+END
