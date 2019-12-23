@@ -197,6 +197,12 @@ IF @FillTables = 'true' BEGIN
 
     SET NOCOUNT ON
 
+    INSERT INTO dbo.Departments VALUES
+      (1, 'Management')
+    , (2, 'IT')
+    , (3, 'Sales')
+
+
     -- Customers
     INSERT INTO dbo.Customers
     VALUES
