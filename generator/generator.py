@@ -1,5 +1,7 @@
 import random
 
+VERBOSE = False
+
 
 def file2list(filename):
     if type(filename) is str:
@@ -10,13 +12,21 @@ def generate(person_type):
 
     if person_type == 'e':
         # generate employees
-        employee_names = file2list('first_names_f_e.txt') + file2list('first_names_m_e.txt')
+        employee_names = file2list(
+            'first_names_f_e.txt') + file2list('first_names_m_e.txt')
         last_names = file2list('last_names.txt')
 
-        print('names:', employee_names)
-        print('last names:', last_names)
+        if VERBOSE:
+            print('names:', employee_names)
+        if VERBOSE:
+            print('last names:', last_names)
 
-        employees = [name + ' ' + random.choice(last_names) for name in employee_names]
-        print(employees)
+        employees = [name + ' ' +
+                     random.choice(last_names) for name in employee_names]
+        if VERBOSE:
+            print(employees)
+        return employees
 
-generate('e')
+
+# test
+print(generate('e'))
