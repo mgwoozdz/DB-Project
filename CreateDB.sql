@@ -151,19 +151,17 @@ CREATE TABLE dbo.[Reviews]
 ;
 
 -- Review Ratings
--- customer can 'thumbUp' a review to mark it helpful
+-- customer can 'thumbUp' a review to mark it as helpful
 CREATE TABLE dbo.[Review Ratings]
     (
         [ReviewID] INT NOT NULL
         , CONSTRAINT FK_ReviewRatings_Reviews FOREIGN KEY (ReviewID)
           REFERENCES dbo.Reviews (ReviewID)
+          ON DELETE CASCADE
+          ON UPDATE CASCADE
         , [CustomerID] INT NOT NULL
         , CONSTRAINT FK_ReviewRatings_Customers FOREIGN KEY (CustomerID)
           REFERENCES dbo.Customers (CustomerID)
-          ON DELETE CASCADE
-          ON UPDATE CASCADE
-        , CONSTRAINT PK_ReviewRatings PRIMARY KEY (ReviewID, CustomerID)
-        
     )
 ;
 
