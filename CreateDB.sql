@@ -1,3 +1,4 @@
+/* CREATE DATABASE */
 USE master;
 GO
 
@@ -13,51 +14,7 @@ GO
 
 PRINT 'Database created successfully.'
 
--- Employees
-IF OBJECT_ID('dbo.Employees', 'U') IS NOT NULL
-    DROP TABLE dbo.Employees
-GO
-
--- Departments
-IF OBJECT_ID('dbo.Departments', 'U') IS NOT NULL
-    DROP TABLE dbo.Departments
-GO
-
--- Reviews
-IF OBJECT_ID('dbo.Reviews', 'U') IS NOT NULL
-    DROP TABLE dbo.Reviews
-GO
-
---Suppliers
-IF OBJECT_ID('dbo.Suppliers', 'U') IS NOT NULL
-    DROP TABLE dbo.Suppliers
-GO
-
--- OrderDetails
-IF OBJECT_ID('dbo.OrderDetails', 'U') IS NOT NULL
-    DROP TABLE dbo.OrderDetails
-GO
-
--- Products
-IF OBJECT_ID('dbo.Products', 'U') IS NOT NULL
-    DROP TABLE dbo.Products
-GO
-
--- Orders
-IF OBJECT_ID('dbo.Orders', 'U') IS NOT NULL
-    DROP TABLE dbo.Orders
-GO
-
---Categories
-IF OBJECT_ID('dbo.Categories', 'U') IS NOT NULL
-    DROP TABLE dbo.Categories
-GO
-
--- Customers
-IF OBJECT_ID('dbo.Customers', 'U') IS NOT NULL
-    DROP TABLE dbo.Customers
-GO
-
+/* CREATE TABLES */
 -- Customers
 CREATE TABLE dbo.Customers
     ( 
@@ -163,7 +120,7 @@ CREATE TABLE dbo.Reviews
           ON UPDATE CASCADE
         , [Content] NTEXT DEFAULT NULL
         , [Rating] TINYINT NOT NULL
-        , CONSTRAINT CK_Reviews_Rating CHECK 
+        , CONSTRAINT CK_Reviews_ValidRating CHECK 
           (Rating >= 1 AND Rating <= 5)   
     )
 ;
@@ -189,8 +146,25 @@ CREATE TABLE dbo.Employees
     )
 ;
 
+--  Storage
+CREATE TABLE dbo.Storage
+    (
+        [ProductID] INT NOT NULL
+        , CONSTRAINT FK_Storage_Products FOREIGN KEY (ProductID)
+          REFERENCES dbo.Products (ProductID)
+          ON DELETE CASCADE
+          ON UPDATE CASCADE
+        , [StockMax] INT NOT NULL
+        , CONSTRAINT CK_Storage_StockMaxValid CHECK ( StockMax > 0 )
+        , [Stock] INT NOT NULL
+        , CONSTRAINT CK_Storage_StockValid CHECK ( Stock BETWEEN 0 AND StockMax )
+    )
+
+;
+
 PRINT 'Tables created successfully.'
 
+/* FILL TABLES WITH DATA*/
 DECLARE @FillTables BIT = 'true'
 
 IF @FillTables = 'true' BEGIN
