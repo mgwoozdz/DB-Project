@@ -201,5 +201,5 @@ IF @FillTables = 'true' BEGIN
     , ('Cyprian Moller')
     ;
 
-    PRINT 'Tables filled.'
+    PRINT 'Tables filled successfully.'
 END
