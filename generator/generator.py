@@ -43,7 +43,7 @@ def generateNames(personel_type: chr, number: int):
 #     print(c)
 
 
-def generateSQL_employees(number: int, departments: int):
+def generateSQLRows_employees(number: int, departments: int):
     """Generates ready-to-paste rows of employees, returned in a list"""
 
     employeesSQL = generateNames('e', number)
@@ -59,6 +59,23 @@ def generateSQL_employees(number: int, departments: int):
     employeesSQL = [e + ')' for e in employeesSQL]
     return employeesSQL
 
+# # test
+# for e in generateSQL_employees(10, 3):
+#     print(',', e)
 
-for e in generateSQL_employees(10, 3):
-    print(',', e)
+
+def generateSQLRows_customers(number: int):
+    """Generates ready-to-paste rows of customers, returned in a list"""
+
+    customersSQL = generateNames('c', number)
+
+    # add opening partnthesis and 's between strings
+    customersSQL = ['(\'' + e + '\'' for e in customersSQL]
+
+    # add closing partnthesis
+    customersSQL = [e + ')' for e in customersSQL]
+    return customersSQL
+
+# # test
+# for c in generateSQLRows_customers(10):
+#     print(',', c)

@@ -192,12 +192,14 @@ CREATE TABLE dbo.Employees
 PRINT 'Tables created successfully.'
 
 DECLARE @FillTables BIT = 'true'
+
 IF @FillTables = 'true' BEGIN
 
     INSERT INTO dbo.Departments VALUES
       (1, 'Management')
     , (2, 'IT')
     , (3, 'Sales')
+    ;
 
     INSERT INTO dbo.Employees VALUES
 	  ('Eryk Sorensen', 2)
@@ -214,7 +216,16 @@ IF @FillTables = 'true' BEGIN
 
     INSERT INTO dbo.Customers
     VALUES
-    ('Jan Nowak')
+      ('Celina Johansen')
+    , ('Cyryl Jensen')
+    , ('Cameron Moller')
+    , ('Carolina Moller')
+    , ('Cyryl Andersen')
+    , ('Cataleya Pedersen')
+    , ('Chanell Moller')
+    , ('Carmen Moller')
+    , ('Carla Christiansen')
+    , ('Cyprian Moller')
     ;
 
     PRINT 'Tables filled.'
