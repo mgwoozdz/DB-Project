@@ -129,9 +129,10 @@ CREATE TABLE dbo.OrderDetails
 ;
 
 -- Reviews
-CREATE TABLE dbo.Reviews
+CREATE TABLE dbo.[Reviews]
     (
-        [CustomerID] INT NOT NULL
+        [ReviewID] INT IDENTITY(1,1) NOT NULL UNIQUE
+        , [CustomerID] INT NOT NULL
         , CONSTRAINT FK_Reviews_Customers FOREIGN KEY (CustomerID)
           REFERENCES dbo.Customers (CustomerID)
           ON DELETE CASCADE
@@ -146,6 +147,23 @@ CREATE TABLE dbo.Reviews
         , CONSTRAINT CK_Reviews_ValidRating CHECK 
           (Rating >= 1 AND Rating <= 5)   
         , CONSTRAINT PK_Reviews PRIMARY KEY (CustomerID, ProductID)
+    )
+;
+
+-- Review Ratings
+-- customer can 'thumbUp' a review to mark it helpful
+CREATE TABLE dbo.[Review Ratings]
+    (
+        [ReviewID] INT NOT NULL
+        , CONSTRAINT FK_ReviewRatings_Reviews FOREIGN KEY (ReviewID)
+          REFERENCES dbo.Reviews (ReviewID)
+        , [CustomerID] INT NOT NULL
+        , CONSTRAINT FK_ReviewRatings_Customers FOREIGN KEY (CustomerID)
+          REFERENCES dbo.Customers (CustomerID)
+          ON DELETE CASCADE
+          ON UPDATE CASCADE
+        , CONSTRAINT PK_ReviewRatings PRIMARY KEY (ReviewID, CustomerID)
+        
     )
 ;
 
