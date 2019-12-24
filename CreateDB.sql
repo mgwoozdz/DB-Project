@@ -34,6 +34,20 @@ CREATE TABLE dbo.Categories
     )   
 ;
 
+-- Products
+CREATE TABLE dbo.Products
+    ( 
+        [ProductID] INT IDENTITY(1,1) NOT NULL
+        , CONSTRAINT PK_Products PRIMARY KEY (ProductID) 
+        , [ProductName] NVARCHAR(40) NOT NULL
+        , [CategoryID] INT
+        , CONSTRAINT FK_Products_Categories FOREIGN KEY (CategoryID)
+          REFERENCES dbo.Categories (CategoryID)
+          ON DELETE CASCADE
+          ON UPDATE CASCADE
+    )
+;
+
 -- Suppliers
 CREATE TABLE dbo.Suppliers
     (
@@ -49,22 +63,33 @@ CREATE TABLE dbo.Suppliers
     )
 ;
 
--- Products
-CREATE TABLE dbo.Products
-    ( 
-        [ProductID] INT IDENTITY(1,1) NOT NULL
-        , CONSTRAINT PK_Products PRIMARY KEY (ProductID) 
-        , [ProductName] NVARCHAR(40) NOT NULL
-        , [SupplierID] INT
-        , CONSTRAINT FK_Products_Suppliers FOREIGN KEY (SupplierID)
-          REFERENCES dbo.Suppliers (SupplierID)
+-- Resupplies
+CREATE TABLE dbo.Resupplies
+    (
+        [ResupplyID] INT IDENTITY(1,1) NOT NULL
+        , CONSTRAINT PK_Resupplies PRIMARY KEY (ResupplyID)
+        , [SupplierID] INT NOT NULL
+        , CONSTRAINT FK_Resupplies_Suppliers FOREIGN KEY (SupplierID)
+          REFERENCEs dbo.Suppliers (SupplierID)
+          ON DELETE CASCADE
+          ON UPDATE CASCADE         
+    )
+;
+
+-- ResupplyDetails
+CREATE TABLE dbo.ResupplyDetails
+    (
+        [ResupplyID] INT NOT NULL
+        , CONSTRAINT FK_ResupplyDetails_Resupplies FOREIGN KEY (ResupplyID)
+          REFERENCEs dbo.Resupplies (ResupplyID)
           ON DELETE CASCADE
           ON UPDATE CASCADE
-        , [CategoryID] INT
-        , CONSTRAINT FK_Products_Categories FOREIGN KEY (CategoryID)
-          REFERENCES dbo.Categories (CategoryID)
+        , [ProductID] INT NOT NULL
+        , CONSTRAINT FK_ResupplyDetails_Products FOREIGN KEY (ProductID)
+          REFERENCEs dbo.Products (ProductID)
           ON DELETE CASCADE
           ON UPDATE CASCADE
+        , [Quantity] SMALLINT NOT NULL
     )
 ;
 
@@ -97,7 +122,7 @@ CREATE TABLE dbo.OrderDetails
           ON DELETE CASCADE
           ON UPDATE CASCADE
         , [UnitPrice] MONEY NOT NULL
-        , [Quantity] INT NOT NULL
+        , [Quantity] SMALLINT NOT NULL
         , [Discount] REAL NOT NULL
         , CONSTRAINT PK_OrderDetails PRIMARY KEY (OrderID, ProductID)
     )
