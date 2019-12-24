@@ -43,7 +43,7 @@ CREATE TABLE dbo.Suppliers
         , [Country] NVARCHAR(20)
         , [City] NVARCHAR(20)
         , [Address] NVARCHAR(40)
-        , [PostalCode] NVARCHAR(10)
+        , [PostalCode] NVARCHAR(6)
         , [EmailAddress] NVARCHAR(30)
         , [Phone] NVARCHAR(20)
     )
@@ -106,14 +106,12 @@ CREATE TABLE dbo.OrderDetails
 -- Reviews
 CREATE TABLE dbo.Reviews
     (
-        [ReviewID] INT NOT NULL
-        , CONSTRAINT PK_Reviews PRIMARY KEY (ReviewID)
-        , [CustomerID] INT
+        [CustomerID] INT NOT NULL
         , CONSTRAINT FK_Reviews_Customers FOREIGN KEY (CustomerID)
           REFERENCES dbo.Customers (CustomerID)
           ON DELETE CASCADE
           ON UPDATE CASCADE
-        , [ProductID] INT
+        , [ProductID] INT NOT NULL
         , CONSTRAINT FK_Reviews_Products FOREIGN KEY (ProductID)
           REFERENCES dbo.Products (ProductID)
           ON DELETE CASCADE
@@ -122,6 +120,7 @@ CREATE TABLE dbo.Reviews
         , [Rating] TINYINT NOT NULL
         , CONSTRAINT CK_Reviews_ValidRating CHECK 
           (Rating >= 1 AND Rating <= 5)   
+        , CONSTRAINT PK_Reviews PRIMARY KEY (CustomerID, ProductID)
     )
 ;
 
@@ -140,7 +139,7 @@ CREATE TABLE dbo.Employees
         [EmployeeID] INT IDENTITY(1,1) NOT NULL
         , CONSTRAINT PK_Employees PRIMARY KEY (EmployeeID)
         , [Name] NVARCHAR(40) NOT NULL
-        , [DepartmentID] TINYINT NOT NULL
+        , [DepartmentID] TINYINT
         , CONSTRAINT FK_Employees_Departments FOREIGN KEY (DepartmentID)
           REFERENCES dbo.Departments (DepartmentID)
     )
