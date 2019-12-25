@@ -76,6 +76,6 @@ def generateSQLRows_customers(number: int):
     customersSQL = [e + ')' for e in customersSQL]
     return customersSQL
 
-# # test
-# for c in generateSQLRows_customers(10):
-#     print(',', c)
+# test
+for c in generateSQLRows_customers(100):
+    print(',', c)

@@ -16,7 +16,7 @@ PRINT 'Database created successfully.'
 
 /* CREATE TABLES */
 -- Customers
-CREATE TABLE dbo.Customers
+CREATE TABLE [dbo].[Customers]
     ( 
         [CustomerID] INT IDENTITY(1,1) NOT NULL
         , CONSTRAINT PK_Customers PRIMARY KEY (CustomerID) 
@@ -25,7 +25,7 @@ CREATE TABLE dbo.Customers
 ;
 
 -- Categories
-CREATE TABLE dbo.Categories
+CREATE TABLE [dbo].[Categories]
     (
         [CategoryID] INT IDENTITY(1,1) NOT NULL
         , CONSTRAINT PK_Categories PRIMARY KEY (CategoryID)
@@ -35,7 +35,7 @@ CREATE TABLE dbo.Categories
 ;
 
 -- Products
-CREATE TABLE dbo.Products
+CREATE TABLE [dbo].[Products]
     ( 
         [ProductID] INT IDENTITY(1,1) NOT NULL
         , CONSTRAINT PK_Products PRIMARY KEY (ProductID) 
@@ -49,7 +49,7 @@ CREATE TABLE dbo.Products
 ;
 
 -- Suppliers
-CREATE TABLE dbo.Suppliers
+CREATE TABLE [dbo].[Suppliers]
     (
         [SupplierID] INT IDENTITY(1,1) NOT NULL
         , CONSTRAINT PK_Suppliers PRIMARY KEY (SupplierID)
@@ -64,7 +64,7 @@ CREATE TABLE dbo.Suppliers
 ;
 
 -- Resupplies
-CREATE TABLE dbo.Resupplies
+CREATE TABLE [dbo].[Resupplies]
     (
         [ResupplyID] INT IDENTITY(1,1) NOT NULL
         , CONSTRAINT PK_Resupplies PRIMARY KEY (ResupplyID)
@@ -77,7 +77,7 @@ CREATE TABLE dbo.Resupplies
 ;
 
 -- ResupplyDetails
-CREATE TABLE dbo.ResupplyDetails
+CREATE TABLE [dbo].[ResupplyDetails]
     (
         [ResupplyID] INT NOT NULL
         , CONSTRAINT FK_ResupplyDetails_Resupplies FOREIGN KEY (ResupplyID)
@@ -94,7 +94,7 @@ CREATE TABLE dbo.ResupplyDetails
 ;
 
 -- Orders
-CREATE TABLE dbo.Orders
+CREATE TABLE [dbo].[Orders]
     ( 
         [OrderID] INT IDENTITY(1,1) NOT NULL
         , CONSTRAINT PK_Orders PRIMARY KEY (OrderID)
@@ -109,7 +109,7 @@ CREATE TABLE dbo.Orders
 ;
 
 -- Order Details
-CREATE TABLE dbo.OrderDetails
+CREATE TABLE [dbo].[OrderDetails]
     ( 
         [OrderID] INT NOT NULL
         , CONSTRAINT FK_OrderDetails_Orders FOREIGN KEY (OrderID)
@@ -129,7 +129,7 @@ CREATE TABLE dbo.OrderDetails
 ;
 
 -- Reviews
-CREATE TABLE dbo.[Reviews]
+CREATE TABLE [dbo].[Reviews]
     (
         [ReviewID] INT IDENTITY(1,1) NOT NULL UNIQUE
         , [CustomerID] INT NOT NULL
@@ -152,7 +152,7 @@ CREATE TABLE dbo.[Reviews]
 
 -- Review Ratings
 -- customer can 'thumbUp' a review to mark it as helpful
-CREATE TABLE dbo.[Review Ratings]
+CREATE TABLE [dbo].[Review Ratings]
     (
         [ReviewID] INT NOT NULL
         , CONSTRAINT FK_ReviewRatings_Reviews FOREIGN KEY (ReviewID)
@@ -166,7 +166,8 @@ CREATE TABLE dbo.[Review Ratings]
 ;
 
 -- Departments
-CREATE TABLE dbo.Departments
+-- Employee can be assigned to a department
+CREATE TABLE [dbo].[Departments]
     (
         [DepartmentID] TINYINT NOT NULL
         , CONSTRAINT PK_Departments PRIMARY KEY (DepartmentID)
@@ -175,21 +176,25 @@ CREATE TABLE dbo.Departments
  ;
 
 -- Employees
-CREATE TABLE dbo.Employees
+CREATE TABLE [dbo].[Employees]
     (
         [EmployeeID] INT IDENTITY(1,1) NOT NULL
         , CONSTRAINT PK_Employees PRIMARY KEY (EmployeeID)
-        , [Name] NVARCHAR(40) NOT NULL
-        , [DepartmentID] TINYINT
+        , [Name] NVARCHAR(40) NOT NULL UNIQUE
+        , [DepartmentID] TINYINT DEFAULT NULL
         , CONSTRAINT FK_Employees_Departments FOREIGN KEY (DepartmentID)
           REFERENCES dbo.Departments (DepartmentID)
+          ON DELETE SET NULL
+          ON UPDATE CASCADE
     )
 ;
 
---  Storage
-CREATE TABLE dbo.Storage
+-- Storage
+-- every item has to be stored in some amount
+CREATE TABLE [dbo].[Storage]
     (
-        [ProductID] INT NOT NULL
+        -- every product has only one spot in storage
+        [ProductID] INT NOT NULL UNIQUE
         , CONSTRAINT FK_Storage_Products FOREIGN KEY (ProductID)
           REFERENCES dbo.Products (ProductID)
           ON DELETE CASCADE
@@ -209,26 +214,45 @@ DECLARE @FillTables BIT = 'true'
 
 IF @FillTables = 'true' BEGIN
 
-    INSERT INTO dbo.Departments VALUES
+    SET NOCOUNT ON
+
+    PRINT 'Inserting Departments...'
+    INSERT INTO [dbo].[Departments] VALUES
       (1, 'Management')
     , (2, 'IT')
     , (3, 'Sales')
+    , (4, 'Packaging')
     ;
+    PRINT 'Done.
+    '
 
-    INSERT INTO dbo.Employees VALUES
-	  ('Eryk Sorensen', 2)
-	, ('Elif Jensen', 3)
-	, ('Eliza Moller', 2)
-	, ('Elisabeth Christiansen', 1)
-	, ('Edward Larsen', 1)
-	, ('Emanuel Poulsen', 3)
-	, ('Eugeniusz Johansen', 3)
-	, ('Eryk Pedersen', 3)
-	, ('Elif Olsen', 2)
-	, ('Elzna Jorgensen', 1)
-	;
+    PRINT 'Inserting Employees...'
+    INSERT INTO [dbo].[Employees] VALUES
+      ('Eryk Sorensen', 2)
+    , ('Elif Jensen', 3)
+    , ('Eliza Moller', 2)
+    , ('Elisabeth Christiansen', 1)
+    , ('Edward Larsen', 1)
+    , ('Emanuel Poulsen', 3)
+    , ('Eugeniusz Johansen', 3)
+    , ('Eryk Pedersen', 3)
+    , ('Elif Olsen', 2)
+    , ('Elzna Jorgensen', 1)
+    , ('Colin Petersen', 4)
+    , ('Carla Jorgensen', 4)
+    , ('Carmen Kristensen', 4)
+    , ('Cataleya Madsen', 4)
+    , ('Chiara Poulsen', 4)
+    , ('Chanel Thomsen', 4)
+    , ('Cyryl Larsen', 4)
+    , ('Chanell Jorgensen', 4)
+    , ('Cecylia Sorensen', 4)
+    , ('Chanell Nielsen', 4)
+    PRINT 'Done.
+    '
 
-    INSERT INTO dbo.Customers
+    PRINT 'Inserting Customers...'
+    INSERT INTO [dbo].[Customers]
     VALUES
       ('Celina Johansen')
     , ('Cyryl Jensen')
@@ -241,6 +265,12 @@ IF @FillTables = 'true' BEGIN
     , ('Carla Christiansen')
     , ('Cyprian Moller')
     ;
+    PRINT 'Done.
+    '
+
+    SET NOCOUNT OFF
 
     PRINT 'Tables filled successfully.'
+
+
 END
