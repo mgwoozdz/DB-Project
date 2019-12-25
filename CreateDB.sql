@@ -23,7 +23,7 @@ PRINT 'Database created successfully.'
 CREATE TABLE [dbo].[Customers]
     ( 
         [CustomerID] INT IDENTITY(1,1) NOT NULL
-        , CONSTRAINT PK_Customers PRIMARY KEY (CustomerID) 
+        , CONSTRAINT [PK_Customers] PRIMARY KEY (CustomerID) 
         , [Name] NVARCHAR(40) NOT NULL
     )
 ;
@@ -32,7 +32,7 @@ CREATE TABLE [dbo].[Customers]
 CREATE TABLE [dbo].[Categories]
     (
         [CategoryID] TINYINT NOT NULL
-        , CONSTRAINT PK_Categories PRIMARY KEY (CategoryID)
+        , CONSTRAINT [PK_Categories] PRIMARY KEY (CategoryID)
         , [Category Name] NVARCHAR(20) NOT NULL
     )   
 ;
@@ -47,7 +47,7 @@ CREATE TABLE [dbo].[Subcategories]
           ON UPDATE CASCADE
         , [SubcategoryID] TINYINT IDENTITY(1,1) NOT NULL UNIQUE
         , [Subcategory Name] NVARCHAR(40) NOT NULL
-        , CONSTRAINT PK_Subcategories PRIMARY KEY (CategoryID, SubcategoryID)
+        , CONSTRAINT [PK_Subcategories] PRIMARY KEY (CategoryID, SubcategoryID)
     )
 ;
 
@@ -55,13 +55,16 @@ CREATE TABLE [dbo].[Subcategories]
 CREATE TABLE [dbo].[Products]
     ( 
         [ProductID] INT IDENTITY(1,1) NOT NULL
-        , CONSTRAINT PK_Products PRIMARY KEY (ProductID) 
+        , CONSTRAINT [PK_Products] PRIMARY KEY (ProductID) 
         , [ProductName] NVARCHAR(40) NOT NULL
         , [CategoryID] TINYINT
-        , CONSTRAINT FK_Products_Categories FOREIGN KEY (CategoryID)
-          REFERENCES dbo.Categories (CategoryID)
-          ON DELETE CASCADE
-          ON UPDATE CASCADE
+        , CONSTRAINT [FK_Products_Categories] FOREIGN KEY (CategoryID)
+          REFERENCES [dbo].[Categories] (CategoryID)
+          ON DELETE SET NULL
+          ON UPDATE CASCADE 
+        , [SubcategoryID] TINYINT
+        , CONSTRAINT [FK_Products_Subcategories] FOREIGN KEY (SubcategoryID)
+          REFERENCES [dbo].[Subcategories] (SubcategoryID)
     )
 ;
 
@@ -69,7 +72,7 @@ CREATE TABLE [dbo].[Products]
 CREATE TABLE [dbo].[Suppliers]
     (
         [SupplierID] INT IDENTITY(1,1) NOT NULL
-        , CONSTRAINT PK_Suppliers PRIMARY KEY (SupplierID)
+        , CONSTRAINT [PK_Suppliers] PRIMARY KEY (SupplierID)
         , [SupplierName] NVARCHAR(40) NOT NULL
         , [Country] NVARCHAR(20)
         , [City] NVARCHAR(20)
@@ -84,10 +87,10 @@ CREATE TABLE [dbo].[Suppliers]
 CREATE TABLE [dbo].[Resupplies]
     (
         [ResupplyID] INT IDENTITY(1,1) NOT NULL
-        , CONSTRAINT PK_Resupplies PRIMARY KEY (ResupplyID)
+        , CONSTRAINT [PK_Resupplies] PRIMARY KEY (ResupplyID)
         , [SupplierID] INT NOT NULL
-        , CONSTRAINT FK_Resupplies_Suppliers FOREIGN KEY (SupplierID)
-          REFERENCEs dbo.Suppliers (SupplierID)
+        , CONSTRAINT [FK_Resupplies_Suppliers] FOREIGN KEY (SupplierID)
+          REFERENCEs [dbo].[Suppliers] (SupplierID)
           ON DELETE CASCADE
           ON UPDATE CASCADE         
     )
@@ -97,13 +100,13 @@ CREATE TABLE [dbo].[Resupplies]
 CREATE TABLE [dbo].[ResupplyDetails]
     (
         [ResupplyID] INT NOT NULL
-        , CONSTRAINT FK_ResupplyDetails_Resupplies FOREIGN KEY (ResupplyID)
-          REFERENCEs dbo.Resupplies (ResupplyID)
+        , CONSTRAINT [FK_ResupplyDetails_Resupplies] FOREIGN KEY (ResupplyID)
+          REFERENCEs [dbo].[Resupplies] (ResupplyID)
           ON DELETE CASCADE
           ON UPDATE CASCADE
         , [ProductID] INT NOT NULL
-        , CONSTRAINT FK_ResupplyDetails_Products FOREIGN KEY (ProductID)
-          REFERENCEs dbo.Products (ProductID)
+        , CONSTRAINT [FK_ResupplyDetails_Products] FOREIGN KEY (ProductID)
+          REFERENCEs [dbo].[Products] (ProductID)
           ON DELETE CASCADE
           ON UPDATE CASCADE
         , [Quantity] SMALLINT NOT NULL
@@ -114,10 +117,10 @@ CREATE TABLE [dbo].[ResupplyDetails]
 CREATE TABLE [dbo].[Orders]
     ( 
         [OrderID] INT IDENTITY(1,1) NOT NULL
-        , CONSTRAINT PK_Orders PRIMARY KEY (OrderID)
+        , CONSTRAINT [PK_Orders] PRIMARY KEY (OrderID)
         , [CustomerID] INT
-        , CONSTRAINT FK_Orders_Customers FOREIGN KEY (CustomerID)
-          REFERENCES dbo.Customers (CustomerID)
+        , CONSTRAINT [FK_Orders_Customers] FOREIGN KEY (CustomerID)
+          REFERENCES [dbo].[Customers] (CustomerID)
           ON DELETE CASCADE
           ON UPDATE CASCADE
         , [OrderDate] DATETIME NOT NULL
@@ -129,19 +132,19 @@ CREATE TABLE [dbo].[Orders]
 CREATE TABLE [dbo].[OrderDetails]
     ( 
         [OrderID] INT NOT NULL
-        , CONSTRAINT FK_OrderDetails_Orders FOREIGN KEY (OrderID)
-          REFERENCES dbo.Orders (OrderID)
+        , CONSTRAINT [FK_OrderDetails_Orders] FOREIGN KEY (OrderID)
+          REFERENCES [dbo].[Orders] (OrderID)
           ON DELETE CASCADE
           ON UPDATE CASCADE
         , [ProductID] INT NOT NULL
-        , CONSTRAINT FK_OrderDetails_Products FOREIGN KEY (ProductID)
-          REFERENCES dbo.Products (ProductID)
+        , CONSTRAINT [FK_OrderDetails_Products] FOREIGN KEY (ProductID)
+          REFERENCES [dbo].[Products] (ProductID)
           ON DELETE CASCADE
           ON UPDATE CASCADE
         , [UnitPrice] MONEY NOT NULL
         , [Quantity] SMALLINT NOT NULL
         , [Discount] REAL NOT NULL
-        , CONSTRAINT PK_OrderDetails PRIMARY KEY (OrderID, ProductID)
+        , CONSTRAINT [PK_OrderDetails] PRIMARY KEY (OrderID, ProductID)
     )
 ;
 
@@ -150,20 +153,20 @@ CREATE TABLE [dbo].[Reviews]
     (
         [ReviewID] INT IDENTITY(1,1) NOT NULL UNIQUE
         , [CustomerID] INT NOT NULL
-        , CONSTRAINT FK_Reviews_Customers FOREIGN KEY (CustomerID)
-          REFERENCES dbo.Customers (CustomerID)
+        , CONSTRAINT [FK_Reviews_Customers] FOREIGN KEY (CustomerID)
+          REFERENCES [dbo].[Customers] (CustomerID)
           ON DELETE CASCADE
           ON UPDATE CASCADE
         , [ProductID] INT NOT NULL
-        , CONSTRAINT FK_Reviews_Products FOREIGN KEY (ProductID)
-          REFERENCES dbo.Products (ProductID)
+        , CONSTRAINT [FK_Reviews_Products] FOREIGN KEY (ProductID)
+          REFERENCES [dbo].[Products] (ProductID)
           ON DELETE CASCADE
           ON UPDATE CASCADE
-        , [Content] NTEXT DEFAULT NULL
+        , [Content] NTEXT
         , [Rating] TINYINT NOT NULL
-        , CONSTRAINT CK_Reviews_ValidRating CHECK 
+        , CONSTRAINT [CK_Reviews_ValidRating] CHECK 
           (Rating >= 1 AND Rating <= 5)   
-        , CONSTRAINT PK_Reviews PRIMARY KEY (CustomerID, ProductID)
+        , CONSTRAINT [PK_Reviews] PRIMARY KEY (CustomerID, ProductID)
     )
 ;
 
