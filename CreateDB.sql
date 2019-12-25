@@ -19,6 +19,62 @@ PRINT 'Database created successfully.'
 --------------------------------------------------------------------
 /* CREATE TABLES */
 
+IF OBJECT_ID('dbo.Customers', 'U') IS NOT NULL
+DROP TABLE [dbo].[Customers]
+GO
+
+IF OBJECT_ID('dbo.Categories', 'U') IS NOT NULL
+DROP TABLE [dbo].[Categories]
+GO
+
+IF OBJECT_ID('dbo.Subcategories', 'U') IS NOT NULL
+DROP TABLE [dbo].[Subcategories]
+GO
+
+IF OBJECT_ID('dbo.Products', 'U') IS NOT NULL
+DROP TABLE [dbo].[Products]
+GO
+
+IF OBJECT_ID('dbo.Suppliers', 'U') IS NOT NULL
+DROP TABLE [dbo].[Suppliers]
+GO
+
+IF OBJECT_ID('dbo.Resupplies', 'U') IS NOT NULL
+DROP TABLE [dbo].[Resupplies]
+GO
+
+IF OBJECT_ID('dbo.Resupply Details', 'U') IS NOT NULL
+DROP TABLE [dbo].[Resupply Details]
+GO
+
+IF OBJECT_ID('dbo.Orders', 'U') IS NOT NULL
+DROP TABLE [dbo].[Orders]
+GO
+
+IF OBJECT_ID('dbo.Order Details', 'U') IS NOT NULL
+DROP TABLE dbo.[Order Details]
+GO
+
+IF OBJECT_ID('dbo.Reviews', 'U') IS NOT NULL
+DROP TABLE [dbo].[Reviews]
+GO
+
+IF OBJECT_ID('dbo.Review Ratings', 'U') IS NOT NULL
+DROP TABLE [dbo].[Review Ratings]
+GO
+
+IF OBJECT_ID('dbo.Departments', 'U') IS NOT NULL
+DROP TABLE [dbo].[Departments]
+GO
+
+IF OBJECT_ID('dbo.Employees', 'U') IS NOT NULL
+DROP TABLE [dbo].[Employees]
+GO
+
+IF OBJECT_ID('dbo.Storage', 'U') IS NOT NULL
+DROP TABLE [dbo].[Storage]
+GO
+
 -- Customers
 CREATE TABLE [dbo].[Customers]
     ( 
@@ -97,7 +153,7 @@ CREATE TABLE [dbo].[Resupplies]
 ;
 
 -- ResupplyDetails
-CREATE TABLE [dbo].[ResupplyDetails]
+CREATE TABLE [dbo].[Resupply Details]
     (
         [ResupplyID] INT NOT NULL
         , CONSTRAINT [FK_ResupplyDetails_Resupplies] FOREIGN KEY (ResupplyID)
@@ -230,7 +286,7 @@ CREATE TABLE [dbo].[Storage]
 PRINT 'Tables created successfully.'
 
 /* /CREATE TABLES */
-
+--------------------------------------------------------------------
 /* FILL TABLES */
 DECLARE @FillTables BIT = 'true'
 
