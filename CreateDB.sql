@@ -229,7 +229,9 @@ CREATE TABLE [dbo].[Storage]
 
 PRINT 'Tables created successfully.'
 
-/* FILL TABLES WITH DATA*/
+/* /CREATE TABLES */
+
+/* FILL TABLES */
 DECLARE @FillTables BIT = 'true'
 
 IF @FillTables = 'true' BEGIN
@@ -352,5 +354,6 @@ IF @FillTables = 'true' BEGIN
 
     PRINT 'Tables filled successfully.'
 
-
 END
+
+/* /FILL TABLES */
