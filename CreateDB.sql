@@ -19,6 +19,8 @@ PRINT 'Database created successfully.'
 --------------------------------------------------------------------
 /* CREATE TABLES */
 
+
+-- -- /* FIRST DROP TABLES*/
 IF OBJECT_ID('dbo.Customers', 'U') IS NOT NULL
 DROP TABLE [dbo].[Customers]
 GO
@@ -74,6 +76,8 @@ GO
 IF OBJECT_ID('dbo.Storage', 'U') IS NOT NULL
 DROP TABLE [dbo].[Storage]
 GO
+-- -- /* /FIRST DROP TABLES*/
+
 
 -- Customers
 CREATE TABLE [dbo].[Customers]
