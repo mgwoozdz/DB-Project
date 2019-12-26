@@ -24,10 +24,6 @@ IF OBJECT_ID('dbo.Brands', 'U') IS NOT NULL
 DROP TABLE [dbo].[Brands]
 GO
 
-IF OBJECT_ID('dbo.Prices', 'U') IS NOT NULL
-DROP TABLE [dbo].[Prices]
-GO
-
 IF OBJECT_ID('dbo.Cart Details', 'U') IS NOT NULL
 DROP TABLE [dbo].[Cart Details]
 GO
@@ -134,7 +130,7 @@ CREATE TABLE [dbo].[Brands]
     (
         [BrandID] INT IDENTITY(1,1)
         , CONSTRAINT [PK_Brands] PRIMARY KEY (BrandID)
-        , [Brand Name] NVARCHAR(20)
+        , [Brand Name] NVARCHAR(20) NOT NULL
     )
 ;
 GO
@@ -153,24 +149,12 @@ CREATE TABLE [dbo].[Products]
         , [SubcategoryID] TINYINT
         , CONSTRAINT [FK_Products_Subcategories] FOREIGN KEY (SubcategoryID)
           REFERENCES [dbo].[Subcategories] (SubcategoryID)
-    )
-;
-GO
-
--- Prices
-CREATE TABLE [dbo].[Prices]
-    (
-        [ProductID] INT NOT NULL UNIQUE
-        , CONSTRAINT [FK_Prices_Products] FOREIGN KEY (ProductID)
-          REFERENCES [dbo].[Products] (ProductID)
-          ON DELETE CASCADE
-          ON UPDATE CASCADE
-        , CONSTRAINT [PK_Prices] PRIMARY KEY (ProductID)
         , [Wholesale Price] MONEY NOT NULL -- TODO constraint: price >=0
         , [Retail Price] MONEY NOT NULL
     )
 ;
 GO
+
 
 -- Suppliers
 CREATE TABLE [dbo].[Suppliers]
@@ -230,8 +214,8 @@ CREATE TABLE [dbo].[Orders]
           REFERENCES [dbo].[Customers] (CustomerID)
           ON DELETE CASCADE
           ON UPDATE CASCADE
-        , [OrderDate] DATETIME NOT NULL
-        , [ShippedDate] DATETIME NOT NULL
+        , [Order Date] DATETIME NOT NULL
+        , [Recieved Date] DATETIME
     )
 ;
 GO
