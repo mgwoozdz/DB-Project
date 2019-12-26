@@ -20,6 +20,14 @@ GO
 /* CREATE TABLES */
 
 -- -- /* FIRST DROP TABLES*/
+IF OBJECT_ID('dbo.Brands', 'U') IS NOT NULL
+DROP TABLE [dbo].[Brands]
+GO
+
+IF OBJECT_ID('dbo.Prices', 'U') IS NOT NULL
+DROP TABLE [dbo].[Prices]
+GO
+
 IF OBJECT_ID('dbo.Cart Details', 'U') IS NOT NULL
 DROP TABLE [dbo].[Cart Details]
 GO
@@ -121,6 +129,16 @@ CREATE TABLE [dbo].[Subcategories]
 ;
 GO
 
+-- Brands
+CREATE TABLE [dbo].[Brands]
+    (
+        [BrandID] INT IDENTITY(1,1)
+        , CONSTRAINT [PK_Brands] PRIMARY KEY (BrandID)
+        , [Brand Name] NVARCHAR(20)
+    )
+;
+GO
+
 -- Products
 CREATE TABLE [dbo].[Products]
     ( 
@@ -135,6 +153,21 @@ CREATE TABLE [dbo].[Products]
         , [SubcategoryID] TINYINT
         , CONSTRAINT [FK_Products_Subcategories] FOREIGN KEY (SubcategoryID)
           REFERENCES [dbo].[Subcategories] (SubcategoryID)
+    )
+;
+GO
+
+-- Prices
+CREATE TABLE [dbo].[Prices]
+    (
+        [ProductID] INT NOT NULL UNIQUE
+        , CONSTRAINT [FK_Prices_Products] FOREIGN KEY (ProductID)
+          REFERENCES [dbo].[Products] (ProductID)
+          ON DELETE CASCADE
+          ON UPDATE CASCADE
+        , CONSTRAINT [PK_Prices] PRIMARY KEY (ProductID)
+        , [Wholesale Price] MONEY NOT NULL -- TODO constraint: price >=0
+        , [Retail Price] MONEY NOT NULL
     )
 ;
 GO
