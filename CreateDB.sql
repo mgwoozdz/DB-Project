@@ -14,13 +14,20 @@ USE TestDB;
 GO
 
 PRINT 'Database created successfully.'
-
+GO
 /* /CREATE DATABASE */
 --------------------------------------------------------------------
 /* CREATE TABLES */
 
-
 -- -- /* FIRST DROP TABLES*/
+IF OBJECT_ID('dbo.Cart Details', 'U') IS NOT NULL
+DROP TABLE [dbo].[Cart Details]
+GO
+
+IF OBJECT_ID('dbo.Carts', 'U') IS NOT NULL
+DROP TABLE [dbo].[Carts]
+GO
+
 IF OBJECT_ID('dbo.Customers', 'U') IS NOT NULL
 DROP TABLE [dbo].[Customers]
 GO
@@ -87,6 +94,7 @@ CREATE TABLE [dbo].[Customers]
         , [Name] NVARCHAR(40) NOT NULL
     )
 ;
+GO
 
 -- Categories
 CREATE TABLE [dbo].[Categories]
@@ -96,6 +104,7 @@ CREATE TABLE [dbo].[Categories]
         , [Category Name] NVARCHAR(20) NOT NULL
     )   
 ;
+GO
 
 -- Subcategories
 CREATE TABLE [dbo].[Subcategories]
@@ -110,6 +119,7 @@ CREATE TABLE [dbo].[Subcategories]
         , CONSTRAINT [PK_Subcategories] PRIMARY KEY (CategoryID, SubcategoryID)
     )
 ;
+GO
 
 -- Products
 CREATE TABLE [dbo].[Products]
@@ -127,6 +137,7 @@ CREATE TABLE [dbo].[Products]
           REFERENCES [dbo].[Subcategories] (SubcategoryID)
     )
 ;
+GO
 
 -- Suppliers
 CREATE TABLE [dbo].[Suppliers]
@@ -142,6 +153,7 @@ CREATE TABLE [dbo].[Suppliers]
         , [Phone] NVARCHAR(20)
     )
 ;
+GO
 
 -- Resupplies
 CREATE TABLE [dbo].[Resupplies]
@@ -155,6 +167,7 @@ CREATE TABLE [dbo].[Resupplies]
           ON UPDATE CASCADE         
     )
 ;
+GO
 
 -- ResupplyDetails
 CREATE TABLE [dbo].[Resupply Details]
@@ -172,6 +185,7 @@ CREATE TABLE [dbo].[Resupply Details]
         , [Quantity] SMALLINT NOT NULL
     )
 ;
+GO
 
 -- Orders
 CREATE TABLE [dbo].[Orders]
@@ -187,9 +201,10 @@ CREATE TABLE [dbo].[Orders]
         , [ShippedDate] DATETIME NOT NULL
     )
 ;
+GO
 
 -- Order Details
-CREATE TABLE [dbo].[OrderDetails]
+CREATE TABLE [dbo].[Order Details]
     ( 
         [OrderID] INT NOT NULL
         , CONSTRAINT [FK_OrderDetails_Orders] FOREIGN KEY (OrderID)
@@ -207,6 +222,7 @@ CREATE TABLE [dbo].[OrderDetails]
         , CONSTRAINT [PK_OrderDetails] PRIMARY KEY (OrderID, ProductID)
     )
 ;
+GO
 
 -- Reviews
 CREATE TABLE [dbo].[Reviews]
@@ -229,66 +245,106 @@ CREATE TABLE [dbo].[Reviews]
         , CONSTRAINT [PK_Reviews] PRIMARY KEY (CustomerID, ProductID)
     )
 ;
+GO
 
 -- Review Ratings
 -- customer can 'thumbUp' a review to mark it as helpful
 CREATE TABLE [dbo].[Review Ratings]
     (
         [ReviewID] INT NOT NULL
-        , CONSTRAINT FK_ReviewRatings_Reviews FOREIGN KEY (ReviewID)
-          REFERENCES dbo.Reviews (ReviewID)
+        , CONSTRAINT [FK_ReviewRatings_Reviews] FOREIGN KEY (ReviewID)
+          REFERENCES [dbo].[Reviews] (ReviewID)
           ON DELETE CASCADE
           ON UPDATE CASCADE
         , [CustomerID] INT NOT NULL
-        , CONSTRAINT FK_ReviewRatings_Customers FOREIGN KEY (CustomerID)
-          REFERENCES dbo.Customers (CustomerID)
+        , CONSTRAINT [FK_ReviewRatings_Customers] FOREIGN KEY (CustomerID)
+          REFERENCES [dbo].[Customers] (CustomerID)
     )
 ;
+GO
 
 -- Departments
 -- Employee can be assigned to a department
 CREATE TABLE [dbo].[Departments]
     (
         [DepartmentID] TINYINT NOT NULL
-        , CONSTRAINT PK_Departments PRIMARY KEY (DepartmentID)
+        , CONSTRAINT [PK_Departments] PRIMARY KEY (DepartmentID)
         , [DepartmentName] VARCHAR(20) NOT NULL
     )
- ;
+;
+GO
 
 -- Employees
 CREATE TABLE [dbo].[Employees]
     (
         [EmployeeID] INT IDENTITY(1,1) NOT NULL
-        , CONSTRAINT PK_Employees PRIMARY KEY (EmployeeID)
+        , CONSTRAINT [PK_Employees] PRIMARY KEY (EmployeeID)
         , [Name] NVARCHAR(40) NOT NULL UNIQUE
         , [DepartmentID] TINYINT DEFAULT NULL
-        , CONSTRAINT FK_Employees_Departments FOREIGN KEY (DepartmentID)
-          REFERENCES dbo.Departments (DepartmentID)
+        , CONSTRAINT [FK_Employees_Departments] FOREIGN KEY (DepartmentID)
+          REFERENCES [dbo].[Departments] (DepartmentID)
           ON DELETE SET NULL
           ON UPDATE CASCADE
     )
 ;
+GO
 
 -- Storage
--- every item has to be stored in some amount
+-- every item has to be stored in Storage
 CREATE TABLE [dbo].[Storage]
     (
         -- every product has only one spot in storage
         [ProductID] INT NOT NULL UNIQUE
-        , CONSTRAINT FK_Storage_Products FOREIGN KEY (ProductID)
-          REFERENCES dbo.Products (ProductID)
+        , CONSTRAINT [FK_Storage_Products] FOREIGN KEY (ProductID)
+          REFERENCES [dbo].[Products] (ProductID)
           ON DELETE CASCADE
           ON UPDATE CASCADE
         , [StockMax] INT NOT NULL
-        , CONSTRAINT CK_Storage_StockMaxValid CHECK ( StockMax > 0 )
+        , CONSTRAINT [CK_Storage_StockMaxValid] CHECK ( StockMax > 0 )
         , [Stock] INT NOT NULL
-        , CONSTRAINT CK_Storage_StockValid CHECK ( Stock BETWEEN 0 AND StockMax )
+        , CONSTRAINT [CK_Storage_StockValid] CHECK ( Stock BETWEEN 0 AND StockMax )
     )
 
 ;
+GO
+
+-- Carts
+-- every user, while shopping, adds items to Cart.
+-- Orders are made by ordering what is currently in a Cart
+CREATE TABLE [dbo].[Carts]
+    (
+        [CartID] INT IDENTITY(1,1)
+        , CONSTRAINT [PK_Carts] PRIMARY KEY (CartID)
+        -- every customer can have only one cart at the time
+        , [CustomerID] INT NOT NULL UNIQUE
+        , CONSTRAINT [FK_Carts_Customers] FOREIGN KEY (CustomerID)
+          REFERENCES [dbo].[Customers] (CustomerID)
+          ON DELETE CASCADE
+          ON UPDATE CASCADE
+    )
+;
+GO
+
+-- Cart Details
+CREATE TABLE [dbo].[Cart Details]
+    (
+        [CartID] INT NOT NULL
+        , CONSTRAINT [FK_CartDetails_Carts] FOREIGN KEY (CartID)
+          REFERENCES [dbo].[Carts] (CartID)
+          ON DELETE CASCADE
+          ON UPDATE CASCADE
+        , [ProductID] INT NOT NULL
+        , CONSTRAINT [FK_CartDetails_Products] FOREIGN KEY (ProductID)
+          REFERENCES [dbo].[Products] (ProductID)
+          ON DELETE CASCADE
+          ON UPDATE CASCADE
+        , CONSTRAINT [PK_CartDetails] PRIMARY KEY (CartID, ProductID)
+    )
+;
+GO
 
 PRINT 'Tables created successfully.'
-
+GO
 /* /CREATE TABLES */
 --------------------------------------------------------------------
 /* FILL TABLES */
@@ -416,4 +472,9 @@ IF @FillTables = 'true' BEGIN
 
 END
 
+GO
 /* /FILL TABLES */
+--------------------------------------------------------------------
+/* CREATE TRIGGERS */
+-- heh
+/* /CREATE TRIGGERS */
