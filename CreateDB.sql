@@ -149,8 +149,8 @@ CREATE TABLE [dbo].[Products]
         , [SubcategoryID] TINYINT
         , CONSTRAINT [FK_Products_Subcategories] FOREIGN KEY (SubcategoryID)
           REFERENCES [dbo].[Subcategories] (SubcategoryID)
-        , [Wholesale Price] MONEY NOT NULL -- TODO constraint: price >=0
-        , [Retail Price] MONEY NOT NULL
+        , [Wholesale Price] MONEY NOT NULL  -- TODO trigger: price >=0
+        , [Retail Price] MONEY NOT NULL  -- TODO trigger
     )
 ;
 GO
@@ -317,9 +317,9 @@ CREATE TABLE [dbo].[Storage]
           ON DELETE CASCADE
           ON UPDATE CASCADE
         , [StockMax] INT NOT NULL
-        , CONSTRAINT [CK_Storage_StockMaxValid] CHECK ( StockMax > 0 )
+        , CONSTRAINT [CK_Storage_StockMaxValid] CHECK ( StockMax > 0 )  -- TODO trigger
         , [Stock] INT NOT NULL
-        , CONSTRAINT [CK_Storage_StockValid] CHECK ( Stock BETWEEN 0 AND StockMax )
+        , CONSTRAINT [CK_Storage_StockValid] CHECK ( Stock BETWEEN 0 AND StockMax ) -- TODO trigger
     )
 
 ;
