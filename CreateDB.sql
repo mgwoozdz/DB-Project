@@ -143,7 +143,9 @@ CREATE TABLE [dbo].[Products]
     ( 
         [ProductID] INT IDENTITY(1,1) NOT NULL
         , CONSTRAINT [PK_Products] PRIMARY KEY (ProductID) 
-        , [ProductName] NVARCHAR(40) NOT NULL
+        , [Product Name] NVARCHAR(40) NOT NULL
+        -- , [BrandID] INT -- TODO NOT NULL, TRIGGER FOR ASSIGNING BrandID to product
+        , [Product Description] NVARCHAR(100)
         , [CategoryID] TINYINT
         , CONSTRAINT [FK_Products_Categories] FOREIGN KEY (CategoryID)
           REFERENCES [dbo].[Categories] (CategoryID)
@@ -462,6 +464,12 @@ IF @FillTables = 'true' BEGIN
     PRINT 'Done.
     '
 
+    PRINT 'Initialising Products...'
+    INSERT INTO [dbo].[Products] VALUES
+      ('Colorstay', 'podkład z pompką do cery tłustej i mieszanej, 30 ml', 1, 1, 30, 48.99)
+    PRINT 'Done.
+    '
+
     PRINT 'Initialising Departments...'
     INSERT INTO [dbo].[Departments] VALUES
       (1, 'Management')
@@ -486,6 +494,13 @@ IF @FillTables = 'true' BEGIN
     , ('Elzna Jorgensen', 4)
     PRINT 'Done.
     '
+
+    PRINT 'Initialising Storage...'
+    INSERT INTO [dbo].[Storage] VALUES
+    (1, 10000, 1000)
+    PRINT 'Done.
+    '
+
 
     SET NOCOUNT OFF
 
