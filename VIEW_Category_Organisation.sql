@@ -13,6 +13,6 @@ LEFT JOIN [dbo].[Subcategories] AS S ON C.CategoryID = S.CategoryID
 ;
 GO
 
-SELECT * FROM [Categories]
-SELECT * FROM [Subcategories]
+-- SELECT * FROM [Categories]
+-- SELECT * FROM [Subcategories]
 SELECT * FROM [Category Organisation]
