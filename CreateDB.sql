@@ -1,5 +1,8 @@
 /* CREATE DATABASE */
 
+PRINT 'Creating Database...'
+GO
+
 USE master;
 GO
 
@@ -10,16 +13,27 @@ GO
 CREATE DATABASE TestDB;
 GO
 
+PRINT 'Done.
+    '
+GO
+
+PRINT 'Switching to database...'
+GO
+
 USE TestDB;
 GO
 
-PRINT 'Database created successfully.'
+PRINT 'Done.
+    '
 GO
 /* /CREATE DATABASE */
 --------------------------------------------------------------------
 /* CREATE TABLES */
 
 -- -- /* FIRST DROP TABLES*/
+PRINT 'Performing cleanup...'
+GO
+
 DROP TABLE IF EXISTS [dbo].[Brands] ;
 GO
 
@@ -70,8 +84,14 @@ GO
 
 DROP TABLE IF EXISTS [dbo].[Storage] ;
 GO
+
+PRINT 'Done.
+    '
+GO
 -- -- /* /FIRST DROP TABLES*/
 
+PRINT 'Creating tables...'
+GO
 
 -- Customers
 CREATE TABLE [dbo].[Customers]
@@ -343,7 +363,8 @@ CREATE TABLE [dbo].[Cart Details]
 ;
 GO
 
-PRINT 'Tables created successfully.'
+PRINT 'Done.
+    '
 GO
 /* /CREATE TABLES */
 --------------------------------------------------------------------
