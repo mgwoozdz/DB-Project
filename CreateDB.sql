@@ -20,72 +20,55 @@ GO
 /* CREATE TABLES */
 
 -- -- /* FIRST DROP TABLES*/
-IF OBJECT_ID('dbo.Brands', 'U') IS NOT NULL
-DROP TABLE [dbo].[Brands]
+DROP TABLE IF EXISTS [dbo].[Brands] ;
 GO
 
-IF OBJECT_ID('dbo.Cart Details', 'U') IS NOT NULL
-DROP TABLE [dbo].[Cart Details]
+DROP TABLE IF EXISTS [dbo].[Cart Details] ;
 GO
 
-IF OBJECT_ID('dbo.Carts', 'U') IS NOT NULL
-DROP TABLE [dbo].[Carts]
+DROP TABLE IF EXISTS [dbo].[Carts] ;
 GO
 
-IF OBJECT_ID('dbo.Customers', 'U') IS NOT NULL
-DROP TABLE [dbo].[Customers]
+DROP TABLE IF EXISTS [dbo].[Customers] ;
 GO
 
-IF OBJECT_ID('dbo.Categories', 'U') IS NOT NULL
-DROP TABLE [dbo].[Categories]
+DROP TABLE IF EXISTS [dbo].[Categories] ;
 GO
 
-IF OBJECT_ID('dbo.Subcategories', 'U') IS NOT NULL
-DROP TABLE [dbo].[Subcategories]
+DROP TABLE IF EXISTS [dbo].[Subcategories] ;
 GO
 
-IF OBJECT_ID('dbo.Products', 'U') IS NOT NULL
-DROP TABLE [dbo].[Products]
+DROP TABLE IF EXISTS [dbo].[Products] ;
 GO
 
-IF OBJECT_ID('dbo.Suppliers', 'U') IS NOT NULL
-DROP TABLE [dbo].[Suppliers]
+DROP TABLE IF EXISTS [dbo].[Suppliers] ;
 GO
 
-IF OBJECT_ID('dbo.Resupplies', 'U') IS NOT NULL
-DROP TABLE [dbo].[Resupplies]
+DROP TABLE IF EXISTS [dbo].[Resupplies] ;
 GO
 
-IF OBJECT_ID('dbo.Resupply Details', 'U') IS NOT NULL
-DROP TABLE [dbo].[Resupply Details]
+DROP TABLE IF EXISTS [dbo].[Resupply Details] ;
 GO
 
-IF OBJECT_ID('dbo.Orders', 'U') IS NOT NULL
-DROP TABLE [dbo].[Orders]
+DROP TABLE IF EXISTS [dbo].[Orders] ;
 GO
 
-IF OBJECT_ID('dbo.Order Details', 'U') IS NOT NULL
-DROP TABLE dbo.[Order Details]
+DROP TABLE IF EXISTS dbo.[Order Details] ;
 GO
 
-IF OBJECT_ID('dbo.Reviews', 'U') IS NOT NULL
-DROP TABLE [dbo].[Reviews]
+DROP TABLE IF EXISTS [dbo].[Reviews] ;
 GO
 
-IF OBJECT_ID('dbo.Review Ratings', 'U') IS NOT NULL
-DROP TABLE [dbo].[Review Ratings]
+DROP TABLE IF EXISTS [dbo].[Review Ratings] ;
 GO
 
-IF OBJECT_ID('dbo.Departments', 'U') IS NOT NULL
-DROP TABLE [dbo].[Departments]
+DROP TABLE IF EXISTS [dbo].[Departments] ;
 GO
 
-IF OBJECT_ID('dbo.Employees', 'U') IS NOT NULL
-DROP TABLE [dbo].[Employees]
+DROP TABLE IF EXISTS [dbo].[Employees] ;
 GO
 
-IF OBJECT_ID('dbo.Storage', 'U') IS NOT NULL
-DROP TABLE [dbo].[Storage]
+DROP TABLE IF EXISTS [dbo].[Storage] ;
 GO
 -- -- /* /FIRST DROP TABLES*/
 
