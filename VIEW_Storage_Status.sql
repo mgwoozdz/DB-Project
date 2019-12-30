@@ -15,6 +15,6 @@ RIGHT JOIN [dbo].[Products] AS P ON S.ProductID = P.ProductID
 ;
 GO
 
-SELECT * FROM [Storage]
-SELECT * FROM [Products]
+-- SELECT * FROM [Storage]
+-- SELECT * FROM [Products]
 SELECT * FROM [Storage Status]
