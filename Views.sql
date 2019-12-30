@@ -1,7 +1,8 @@
 USE TestDB
 GO
 
-DROP VIEW IF EXISTS [dbo].[Storage Status] ;
+DROP VIEW IF EXISTS [dbo].[Storage Status]
+;
 GO
 
 CREATE VIEW [Storage Status]
@@ -11,4 +12,5 @@ SELECT S.ProductID, P.ProductName,
     S.StockMax) AS [Stock]
 FROM [dbo].[Storage] AS S
 JOIN [dbo].[Products] AS P ON S.ProductID = P.ProductID
+;
 GO
