@@ -144,7 +144,7 @@ CREATE TABLE [dbo].[Products]
         [ProductID] INT IDENTITY(1,1) NOT NULL
         , CONSTRAINT [PK_Products] PRIMARY KEY (ProductID) 
         , [Product Name] NVARCHAR(40) NOT NULL
-        -- , [BrandID] INT -- TODO NOT NULL, TRIGGER FOR ASSIGNING BrandID to product
+        , [BrandID] INT NOT NULL
         , [Product Description] NVARCHAR(100)
         , [CategoryID] TINYINT
         , CONSTRAINT [FK_Products_Categories] FOREIGN KEY (CategoryID)
@@ -464,14 +464,21 @@ IF @FillTables = 'true' BEGIN
     PRINT 'Done.
     '
 
-    PRINT 'Initialising Products...'
-    INSERT INTO [dbo].[Products] VALUES
-      ('Colorstay', 'podkład z pompką do cery tłustej i mieszanej, 30 ml', 1, 1, 24, 48.99) -- Brand=Revlon
-    , ('X-CEPTIONAL WEAR', 'kryjący podkład do twarzy w kremie do twarzy, 35 ml', 1, 1, 21, 41.99) --Gosh
-    , ('MINERALS GOLDEN FAIREST', 'podkład matujący do twarzy, 4 g', 1, 1, 22, 44.99) -- Annabelle
-    , ('HD LIQUID COVERAGE', 'podkład do twarzy, 30 ml', 1, 1, 10, 23.19) -- Catrice
+    PRINT 'Initialising Brands...'
+    INSERT INTO [dbo].[Brands] VALUES
+      ('Hello Kitty')
     PRINT 'Done.
     '
+
+
+    -- PRINT 'Initialising Products...'
+    -- INSERT INTO [dbo].[Products] VALUES
+    --   ('Colorstay', 'podkład z pompką do cery tłustej i mieszanej, 30 ml', 1, 1, 24, 48.99) -- Brand=Revlon
+    -- , ('X-CEPTIONAL WEAR', 'kryjący podkład do twarzy w kremie do twarzy, 35 ml', 1, 1, 21, 41.99) --Gosh
+    -- , ('MINERALS GOLDEN FAIREST', 'podkład matujący do twarzy, 4 g', 1, 1, 22, 44.99) -- Annabelle
+    -- , ('HD LIQUID COVERAGE', 'podkład do twarzy, 30 ml', 1, 1, 10, 23.19) -- Catrice
+    -- PRINT 'Done.
+    -- '
 
     PRINT 'Initialising Departments...'
     INSERT INTO [dbo].[Departments] VALUES
@@ -498,13 +505,13 @@ IF @FillTables = 'true' BEGIN
     PRINT 'Done.
     '
 
-    PRINT 'Initialising Storage...'
-    INSERT INTO [dbo].[Storage] VALUES
-      (1, 1000, 1000)
-    , (2, 1000, 1000)
-    , (3, 1000, 1000)
-    PRINT 'Done.
-    '
+    -- PRINT 'Initialising Storage...'
+    -- INSERT INTO [dbo].[Storage] VALUES
+    --   (1, 1000, 1000)
+    -- , (2, 1000, 1000)
+    -- , (3, 1000, 1000)
+    -- PRINT 'Done.
+    -- '
 
     SET NOCOUNT OFF
 
