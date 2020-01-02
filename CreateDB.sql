@@ -471,14 +471,13 @@ IF @FillTables = 'true' BEGIN
     '
 
 
-    -- PRINT 'Initialising Products...'
-    -- INSERT INTO [dbo].[Products] VALUES
-    --   ('Colorstay', 'podkład z pompką do cery tłustej i mieszanej, 30 ml', 1, 1, 24, 48.99) -- Brand=Revlon
-    -- , ('X-CEPTIONAL WEAR', 'kryjący podkład do twarzy w kremie do twarzy, 35 ml', 1, 1, 21, 41.99) --Gosh
-    -- , ('MINERALS GOLDEN FAIREST', 'podkład matujący do twarzy, 4 g', 1, 1, 22, 44.99) -- Annabelle
-    -- , ('HD LIQUID COVERAGE', 'podkład do twarzy, 30 ml', 1, 1, 10, 23.19) -- Catrice
-    -- PRINT 'Done.
-    -- '
+   PRINT 'Initialising Products...'
+   INSERT INTO [dbo].[Products] VALUES
+       ('Revlon', 'Colorstay', 'podkład z pompką do cery tłustej i mieszanej, 30 ml', 1, 1, 24, 48.99)
+     , ('Gosh', 'X-CEPTIONAL WEAR', 'kryjący podkład do twarzy w kremie do twarzy, 35 ml', 1, 1, 21, 41.99) --Gosh
+     , ('Anabelle Minerals', 'GOLDEN FAIREST', 'podkład matujący do twarzy, 4 g', 1, 1, 22, 44.99) -- Annabelle
+     , ('Catrice','HD LIQUID COVERAGE', 'podkład do twarzy, 30 ml', 1, 1, 10, 23.19) -- Catrice
+     PRINT 'Done. '
 
     PRINT 'Initialising Departments...'
     INSERT INTO [dbo].[Departments] VALUES
