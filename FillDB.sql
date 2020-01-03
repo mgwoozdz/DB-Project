@@ -100,7 +100,7 @@ IF @FillTables = 'true' BEGIN
 
 
    PRINT 'Initialising Products...'
-   INSERT INTO [dbo].[Products] VALUES
+   INSERT INTO [dbo].[New Products] VALUES
        ('Revlon', 'Colorstay', 'podkład z pompką do cery tłustej i mieszanej, 30 ml', 1, 1, 24, 48.99)
      , ('Gosh', 'X-CEPTIONAL WEAR', 'kryjący podkład do twarzy w kremie do twarzy, 35 ml', 1, 1, 21, 41.99) --Gosh
      , ('Anabelle Minerals', 'GOLDEN FAIREST', 'podkład matujący do twarzy, 4 g', 1, 1, 22, 44.99) -- Annabelle
@@ -132,13 +132,13 @@ IF @FillTables = 'true' BEGIN
     PRINT 'Done.
     '
 
-    -- PRINT 'Initialising Storage...'
-    -- INSERT INTO [dbo].[Storage] VALUES
-    --   (1, 1000, 1000)
-    -- , (2, 1000, 1000)
-    -- , (3, 1000, 1000)
-    -- PRINT 'Done.
-    -- '
+    PRINT 'Initialising Storage...'
+    INSERT INTO [dbo].[Storage] VALUES
+      (1, 1000, 1000)
+    , (2, 1000, 1000)
+    , (3, 1000, 1000)
+    PRINT 'Done.
+    '
 
     SET NOCOUNT OFF
 
