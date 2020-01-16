@@ -85,6 +85,10 @@ GO
 DROP TABLE IF EXISTS [dbo].[Storage] ;
 GO
 
+DROP TABLE IF EXISTS [dbo].[New Products] ;
+GO
+
+
 PRINT 'Done.
     '
 GO
@@ -143,6 +147,8 @@ CREATE TABLE [dbo].[Brands]
 ;
 GO
 
+
+
 -- Products
 CREATE TABLE [dbo].[Products]
     ( 
@@ -162,6 +168,20 @@ CREATE TABLE [dbo].[Products]
         , [Wholesale Price] MONEY NOT NULL  -- TODO trigger: price >=0
         , [Retail Price] MONEY NOT NULL  -- TODO trigger
     )
+;
+GO
+
+-- temporary table for adding new products
+CREATE TABLE [dbo].[New Products]
+(
+    [Brand Name] NVARCHAR(20)
+    , [Product Name] NVARCHAR(40) NOT NULL
+    , [Product Description] NVARCHAR(100)
+    , [CategoryID] TINYINT
+    , [SubcategoryID] TINYINT
+    , [Wholesale Price] MONEY NOT NULL
+    , [Retail Price] MONEY NOT NULL
+)
 ;
 GO
 
