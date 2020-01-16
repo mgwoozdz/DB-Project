@@ -99,7 +99,12 @@ CREATE TABLE [dbo].[Customers]
         [CustomerID] INT IDENTITY(1,1) NOT NULL
         , CONSTRAINT [PK_Customers] PRIMARY KEY (CustomerID) 
         , [Name] NVARCHAR(40) NOT NULL
-    )
+        , [Email Addres] NVARCHAR(40) NOT NULL UNIQUE
+        , [Phone Number] NVARCHAR(15) 
+        , [Addres] NVARCHAR(40)
+        , [Postal Code] NVARCHAR(8)
+        , [City] NVARCHAR(25)
+     )
 ;
 GO
 
