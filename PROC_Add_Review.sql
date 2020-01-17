@@ -11,7 +11,7 @@ CREATE PROC dbo.AddReview
 
 AS
 
-	DECLARE @error AS NVARCHAR(400);
+	DECLARE @error AS NVARCHAR(100);
 	
 	IF @CustomerID IS NULL OR @ProductID IS NULL OR @Rating IS NULL
 	BEGIN
