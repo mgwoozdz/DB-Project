@@ -1,3 +1,5 @@
+-- widok pokazujacy ile bylo w sumie zamowien kazdego produktu z osobna
+
 USE TestDB
 GO
 
@@ -13,3 +15,4 @@ JOIN [dbo].[Order Details] AS OD
 GROUP BY P.ProductID
 
 -- WORK IN PROGRESS
+-- NOT TESTED TO WORK
