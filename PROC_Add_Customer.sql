@@ -1,3 +1,6 @@
+USE TestDB
+GO
+
 IF OBJECT_ID('dbo.AddCustomer', 'P') IS NOT NULL
 DROP PROC dbo.AddCustomer
 GO

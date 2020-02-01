@@ -386,6 +386,7 @@ CREATE TABLE [dbo].[Cart Details]
           ON DELETE CASCADE
           ON UPDATE CASCADE
         , CONSTRAINT [PK_CartDetails] PRIMARY KEY (CartID, ProductID)
+        , [Quantity] INT NOT NULL
     )
 ;
 GO
