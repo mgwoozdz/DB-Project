@@ -119,6 +119,7 @@ INSERT INTO [dbo].[New Products] VALUES
 , ('Gosh', 'X-CEPTIONAL WEAR', 'kryjący podkład do twarzy w kremie do twarzy, 35 ml', 1, 1, 21, 41.99) --Gosh
 , ('Anabelle Minerals', 'GOLDEN FAIREST', 'podkład matujący do twarzy, 4 g', 1, 1, 22, 44.99) -- Annabelle
 , ('Catrice','HD LIQUID COVERAGE', 'podkład do twarzy, 30 ml', 1, 1, 10, 23.19) -- Catrice
+;
 PRINT 'Done. 
 '
 
@@ -144,6 +145,7 @@ INSERT INTO [dbo].[Employees] VALUES
 , ('Eryk Pedersen', 4)
 , ('Elif Olsen', 4)
 , ('Elzna Jorgensen', 4)
+;
 PRINT 'Done.
 '
 
@@ -152,6 +154,27 @@ INSERT INTO [dbo].[Storage] VALUES
   (1, 1000, 1000)
 , (2, 1000, 1000)
 , (3, 1000, 1000)
+;
+PRINT 'Done.
+'
+
+
+PRINT 'Initialising Orders...'
+INSERT INTO [dbo].[Orders] (CustomerID) VALUES
+  (1)
+, (2)
+, (3)
+;
+PRINT 'Done.
+'
+
+PRINT 'Initialising Order Details...'
+INSERT INTO [dbo].[Order Details] VALUES
+  (1, 1, 10.00, 1, 0.0)
+, (1, 2, 10.00, 1, 0.0)
+, (1, 3, 10.00, 1, 0.0)
+, (2, 1, 10.00, 1, 0.0)
+, (3, 3, 10.00, 1, 0.0)
 PRINT 'Done.
 '
 

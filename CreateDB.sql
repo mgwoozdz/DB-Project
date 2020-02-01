@@ -244,7 +244,7 @@ CREATE TABLE [dbo].[Orders]
           REFERENCES [dbo].[Customers] (CustomerID)
           ON DELETE CASCADE
           ON UPDATE CASCADE
-        , [Order Date] DATETIME NOT NULL
+        , [Order Date] DATETIME
         , [Recieved Date] DATETIME
     )
 ;
