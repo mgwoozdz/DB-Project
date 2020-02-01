@@ -68,7 +68,5 @@ BEGIN
 END
 
 
-EXEC dbo.AddToCart @CustomerID = 1, @ProductID = 2, @Quantity = 10
+EXEC dbo.AddToCart @CustomerID = 2, @ProductID = 3, @Quantity = 10
 GO
-
-

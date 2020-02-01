@@ -245,7 +245,12 @@ CREATE TABLE [dbo].[Orders]
           ON DELETE CASCADE
           ON UPDATE CASCADE
         , [Order Date] DATETIME
-        , [Recieved Date] DATETIME
+        , [EmployeeID] INT 
+        , CONSTRAINT [FK_Orders_Employees] FOREIGN KEY (EmployeeID)
+          REFERENCES [dbo].[Employees] (EmployeeID)
+          ON DELETE CASCADE
+          ON UPDATE CASCADE
+        
     )
 ;
 GO
@@ -263,9 +268,8 @@ CREATE TABLE [dbo].[Order Details]
           REFERENCES [dbo].[Products] (ProductID)
           ON DELETE CASCADE
           ON UPDATE CASCADE
-        , [UnitPrice] MONEY NOT NULL
+        , [UnitPrice] MONEY 
         , [Quantity] SMALLINT NOT NULL
-        , [Discount] REAL NOT NULL
         , CONSTRAINT [PK_OrderDetails] PRIMARY KEY (OrderID, ProductID)
     )
 ;
