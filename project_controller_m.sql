@@ -21,5 +21,6 @@ GO
 GO
 
 
+SELECT * FROM [Products]
 SELECT * FROM [Orders]
-SELECT * FROM [Products Bought]
+SELECT * FROM [Products Bought] ORDER BY Quantity DESC
