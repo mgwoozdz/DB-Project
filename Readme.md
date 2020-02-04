@@ -6,9 +6,8 @@ Zaprojektuj i zaimplementuj bazę danych służącą do gromadzenia i przetwarza
 - [x] baza powinna zawierać dane dotyczące atrybutów, których wartość zmienia się w czasie
 - [x] baza powinna zawierać tabele realizujące jeden ze schematów dziedziczenia
 - [ ] 10 widoków lub funkcji
-- [ ] baza danych powinna być odpowiednio oprogramowana z wykorzystaniem procedur składowanych i wyzwalaczy
--   [x] po 5 procedur
--   [ ] po 5 wyzwalaczy
+- [x] 5 procedur
+- [ ] 5 wyzwalaczy
 - [ ] należy zaprojektować strategię pielęgnacji bazy danych (kopie zapasowe)
 - [ ] można utworzyć dwa programy klienckie: jeden umożliwiający pracę administratorów (użytkowników ze zwiększonymi uprawnieniami), drugi umożliwiający pracę zwykłych użytkowników
 
