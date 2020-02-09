@@ -234,6 +234,32 @@ CREATE TABLE [dbo].[Resupply Details]
 ;
 GO
 
+-- Departments
+-- Employee can be assigned to a department
+CREATE TABLE [dbo].[Departments]
+    (
+        [DepartmentID] TINYINT NOT NULL
+        , CONSTRAINT [PK_Departments] PRIMARY KEY (DepartmentID)
+        , [DepartmentName] VARCHAR(20) NOT NULL
+    )
+;
+GO
+
+-- Employees
+CREATE TABLE [dbo].[Employees]
+    (
+        [EmployeeID] INT IDENTITY(1,1) NOT NULL
+        , CONSTRAINT [PK_Employees] PRIMARY KEY (EmployeeID)
+        , [Name] NVARCHAR(40) NOT NULL UNIQUE
+        , [DepartmentID] TINYINT DEFAULT NULL
+        , CONSTRAINT [FK_Employees_Departments] FOREIGN KEY (DepartmentID)
+          REFERENCES [dbo].[Departments] (DepartmentID)
+          ON DELETE SET NULL
+          ON UPDATE CASCADE
+    )
+;
+GO
+
 -- Orders
 CREATE TABLE [dbo].[Orders]
     ( 
@@ -314,31 +340,6 @@ CREATE TABLE [dbo].[Review Ratings]
 ;
 GO
 
--- Departments
--- Employee can be assigned to a department
-CREATE TABLE [dbo].[Departments]
-    (
-        [DepartmentID] TINYINT NOT NULL
-        , CONSTRAINT [PK_Departments] PRIMARY KEY (DepartmentID)
-        , [DepartmentName] VARCHAR(20) NOT NULL
-    )
-;
-GO
-
--- Employees
-CREATE TABLE [dbo].[Employees]
-    (
-        [EmployeeID] INT IDENTITY(1,1) NOT NULL
-        , CONSTRAINT [PK_Employees] PRIMARY KEY (EmployeeID)
-        , [Name] NVARCHAR(40) NOT NULL UNIQUE
-        , [DepartmentID] TINYINT DEFAULT NULL
-        , CONSTRAINT [FK_Employees_Departments] FOREIGN KEY (DepartmentID)
-          REFERENCES [dbo].[Departments] (DepartmentID)
-          ON DELETE SET NULL
-          ON UPDATE CASCADE
-    )
-;
-GO
 
 -- Storage
 -- every item has to be stored in Storage
