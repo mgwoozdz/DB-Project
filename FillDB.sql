@@ -159,7 +159,7 @@ PRINT 'Done.
 '
 
 
-PRINT 'Initialising Orders...'
+/*PRINT 'Initialising Orders...'
 INSERT INTO [dbo].[Orders] (CustomerID) VALUES
   (1)
 , (2)
@@ -178,7 +178,7 @@ INSERT INTO [dbo].[Order Details] VALUES
 PRINT 'Done.
 '
 
-SET NOCOUNT OFF
+SET NOCOUNT OFF*/
 
 PRINT 'Tables filled successfully.'
 
