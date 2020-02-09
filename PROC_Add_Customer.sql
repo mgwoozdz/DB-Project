@@ -33,16 +33,3 @@ INSERT INTO Carts(CustomerID)
 VALUES ((SELECT CustomerID FROM Customers WHERE [Email Addres] = @Email))
 GO
 
-EXEC dbo.AddCustomer @Name = 'Celina Johansen', @Email = 'celinajohansen@gmail.com', @PhoneNumber = '123456789', 
-@Addres = 'Skarbowa 16', @PostalCode =  '30-056', @City = 'Krakow'
-GO
-
-EXEC dbo.AddCustomer @Name = 'Cyryl Jensen', @Email = 'cJensen@gmail.com', @PhoneNumber = '222333444', 
-@Addres = 'Lipowa 18/2', @PostalCode = '12-819', @City = 'Warszawa'
-GO
-
-EXEC dbo.AddCustomer @Name = 'Cameron Moller', @Email = 'mollercameron@wp.pl', @PhoneNumber =  '367235980', 
-@Addres = 'Lea 13', @PostalCode = '26-600', @City = 'Radom'
-GO
-
-

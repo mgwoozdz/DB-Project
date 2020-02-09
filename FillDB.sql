@@ -20,7 +20,25 @@ SET NOCOUNT ON
 -- '
 
   
-   -- PRINT 'Initialising Customers...'
+PRINT 'Initialising Customers...'
+    EXEC dbo.AddCustomer @Name = 'Celina Johansen', @Email = 'celinajohansen@gmail.com', @PhoneNumber = '123456789', 
+@Addres = 'Skarbowa 16', @PostalCode =  '30-056', @City = 'Krakow'
+GO
+
+EXEC dbo.AddCustomer @Name = 'Cyryl Jensen', @Email = 'cJensen@gmail.com', @PhoneNumber = '222333444', 
+@Addres = 'Lipowa 18/2', @PostalCode = '12-819', @City = 'Warszawa'
+GO
+
+EXEC dbo.AddCustomer @Name = 'Cameron Moller', @Email = 'mollercameron@wp.pl', @PhoneNumber =  '367235980', 
+@Addres = 'Lea 13', @PostalCode = '26-600', @City = 'Radom'
+GO
+
+PRINT 'Done.'
+
+
+
+
+
    -- INSERT INTO [dbo].[Customers] --name, addresmail, phone, addres, postal code, city
    -- VALUES
      -- ('Celina Johansen', 'celinajohansen@gmail.com', '123456789', 'Skarbowa 16', '30-056', 'Krakow')
@@ -34,7 +52,7 @@ SET NOCOUNT ON
     --, ('Carla Christiansen', 'carlachris@gmail.com', '334226557', 'Czysta 112', '55-220', 'Gdansk')
     --, ('Cyprian Moller', 'cyprianMoll@wp.pl', '346747292', 'Kijowska 99','40-222', 'Poznan')
    -- ;
-    --PRINT 'Done.'
+    --
     
 PRINT 'Initialising Categories...'
 INSERT INTO [dbo].[Categories] VALUES
@@ -164,28 +182,49 @@ PRINT 'Done.
 '
 GO
 
-/*PRINT 'Initialising Orders...'
-INSERT INTO [dbo].[Orders] (CustomerID) VALUES
-  (1)
-, (2)
-, (3)
-;
-PRINT 'Done.
-'
+
+
+PRINT 'Adding some products to carts'
+
+EXEC dbo.AddToCart @CustomerID = 1, @ProductID = 1, @Quantity = 2
 GO
 
-PRINT 'Initialising Order Details...'
-INSERT INTO [dbo].[Order Details] VALUES
-  (1, 1, 10.00, 1, 0.0)
-, (1, 2, 10.00, 1, 0.0)
-, (1, 3, 10.00, 1, 0.0)
-, (2, 1, 10.00, 1, 0.0)
-, (3, 3, 10.00, 1, 0.0)
-PRINT 'Done.
-'
+EXEC dbo.AddToCart @CustomerID = 1, @ProductID = 2, @Quantity = 3
 GO
 
-SET NOCOUNT OFF*/
+EXEC dbo.AddToCart @CustomerID = 3, @ProductID = 2, @Quantity = 5
+GO
+
+EXEC dbo.AddToCart @CustomerID = 2, @ProductID = 4, @Quantity = 10
+GO
+
+EXEC dbo.AddToCart @CustomerID = 1, @ProductID = 3, @Quantity = 7
+GO
+
+EXEC dbo.AddToCart @CustomerID = 2, @ProductID = 1, @Quantity = 2
+GO
+
+EXEC dbo.AddToCart @CustomerID = 3, @ProductID = 1, @Quantity = 1
+GO
+
+EXEC dbo.AddToCart @CustomerID = 3, @ProductID = 4, @Quantity = 100
+GO
+
+PRINT 'Done.'
+
+PRINT 'Buying products...'
+EXEC dbo.Buy @CustomerID = 1
+GO
+EXEC dbo.Buy @CustomerID = 2
+GO
+EXEC dbo.Buy @CustomerID = 3
+GO
+
+PRINT 'Done.'
+
+
+
+SET NOCOUNT OFF
 
 PRINT 'Tables filled successfully.'
 
