@@ -49,6 +49,7 @@ INSERT INTO [dbo].[Categories] VALUES
 ;
 PRINT 'Done.
 '
+GO
 
 PRINT 'Initialising Subcategories...'
 INSERT INTO [dbo].[Subcategories] VALUES
@@ -105,13 +106,14 @@ INSERT INTO [dbo].[Subcategories] VALUES
 ;
 PRINT 'Done.
 '
+GO
 
 PRINT 'Initialising Brands...'
 INSERT INTO [dbo].[Brands] VALUES
   ('Hello Kitty') -- test
 PRINT 'Done.
 '
-
+GO
 
 PRINT 'Initialising Products...'
 INSERT INTO [dbo].[New Products] VALUES
@@ -122,6 +124,7 @@ INSERT INTO [dbo].[New Products] VALUES
 ;
 PRINT 'Done. 
 '
+GO
 
 PRINT 'Initialising Departments...'
 INSERT INTO [dbo].[Departments] VALUES
@@ -132,6 +135,7 @@ INSERT INTO [dbo].[Departments] VALUES
 ;
 PRINT 'Done.
 '
+GO
 
 PRINT 'Initialising Employees...'
 INSERT INTO [dbo].[Employees] VALUES
@@ -148,6 +152,7 @@ INSERT INTO [dbo].[Employees] VALUES
 ;
 PRINT 'Done.
 '
+GO
 
 PRINT 'Initialising Storage...'
 INSERT INTO [dbo].[Storage] VALUES
@@ -157,7 +162,7 @@ INSERT INTO [dbo].[Storage] VALUES
 ;
 PRINT 'Done.
 '
-
+GO
 
 PRINT 'Initialising Orders...'
 INSERT INTO [dbo].[Orders] (CustomerID) VALUES
@@ -167,6 +172,7 @@ INSERT INTO [dbo].[Orders] (CustomerID) VALUES
 ;
 PRINT 'Done.
 '
+GO
 
 PRINT 'Initialising Order Details...'
 INSERT INTO [dbo].[Order Details] VALUES
@@ -177,6 +183,7 @@ INSERT INTO [dbo].[Order Details] VALUES
 , (3, 3, 10.00, 1, 0.0)
 PRINT 'Done.
 '
+GO
 
 SET NOCOUNT OFF
 
