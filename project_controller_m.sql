@@ -17,6 +17,12 @@ GO
 :r C:\Users\Mateusz\Desktop\DB-Project\PROC_Delete_From_Cart.sql
 GO
 
+-- Views
+PRINT 'Initiaising Views...'
+:r C:\Users\Mateusz\Desktop\DB-Project\VIEW_Products_Bought.sql
+GO
+PRINT 'Done.'
+
 -- fill
 :r C:\Users\Mateusz\Desktop\DB-Project\FillDB.sql
 GO
@@ -24,11 +30,8 @@ GO
 
 
 -- testing
-:r C:\Users\Mateusz\Desktop\DB-Project\VIEW_Products_Bought.sql
 GO
 
 
-SELECT * FROM [Products]
-SELECT * FROM [Orders]
-SELECT * FROM [Order Details]
-SELECT * FROM [Products Bought] ORDER BY Quantity DESC
+SELECT * FROM dbo.[Products Bought]
+
