@@ -177,7 +177,7 @@ GO
 EXEC dbo.AddToCart @CustomerID = 3, @ProductID = 2, @Quantity = 5
 GO
 
-EXEC dbo.AddToCart @CustomerID = 2, @ProductID = 4, @Quantity = 10
+EXEC dbo.AddToCart @CustomerID = 2, @ProductID = 2, @Quantity = 10
 GO
 
 EXEC dbo.AddToCart @CustomerID = 1, @ProductID = 3, @Quantity = 7
@@ -189,7 +189,7 @@ GO
 EXEC dbo.AddToCart @CustomerID = 3, @ProductID = 1, @Quantity = 1
 GO
 
-EXEC dbo.AddToCart @CustomerID = 3, @ProductID = 4, @Quantity = 100
+EXEC dbo.AddToCart @CustomerID = 3, @ProductID = 3, @Quantity = 100
 GO
 
 PRINT 'Done.'
@@ -199,8 +199,8 @@ EXEC dbo.Buy @CustomerID = 1
 GO
 EXEC dbo.Buy @CustomerID = 2
 GO
-EXEC dbo.Buy @CustomerID = 3
-GO
+/*EXEC dbo.Buy @CustomerID = 3
+GO*/
 
 PRINT 'Done.'
 

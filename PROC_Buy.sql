@@ -1,3 +1,4 @@
+GO
 USE TestDB
 GO
 
