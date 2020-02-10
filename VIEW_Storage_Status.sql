@@ -17,4 +17,4 @@ GO
 
 -- SELECT * FROM [Storage]
 -- SELECT * FROM [Products]
-SELECT * FROM [Storage Status]
+-- SELECT * FROM [Storage Status]
