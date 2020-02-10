@@ -1,5 +1,4 @@
-USE TestDB
-GO
+
 
 IF OBJECT_ID('dbo.DeleteFromCart', 'P') IS NOT NULL
 DROP PROC dbo.DeleteFromCart
@@ -71,7 +70,4 @@ go
 
 
     
-EXEC dbo.DeleteFromCart @CustomerID = 1, @ProductID = 2, @Quantity = 90
-GO
-
 

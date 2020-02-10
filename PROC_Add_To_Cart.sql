@@ -1,9 +1,11 @@
-USE TestDB
+IF OBJECT_ID('dbo.AddToCart', 'P') IS NOT NULL
+BEGIN
+
+DROP PROC dbo.AddToCart
+PRINT 'Dropped'
+END
 GO
 
-IF OBJECT_ID('dbo.AddToCart', 'P') IS NOT NULL
-DROP PROC dbo.AddToCart
-GO
 
 CREATE PROC dbo.AddToCart
 @CustomerID INT = NULL,
@@ -31,9 +33,6 @@ WHERE CustomerID = @CustomerID
 
 
 DECLARE @RealQuantity AS INT
-
-
-
 
 Select @RealQuantity = Stock FROM Storage WHERE ProductID = @ProductID;
 
@@ -68,5 +67,3 @@ BEGIN
 END
 
 
-EXEC dbo.AddToCart @CustomerID = 2, @ProductID = 3, @Quantity = 10
-GO
