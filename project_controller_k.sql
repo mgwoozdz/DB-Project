@@ -15,6 +15,7 @@ GO
 :r C:\Users\pkaro\Desktop\BazyDanych\Projekt\DB-Project\PROC_Add_To_Cart.sql
 :r C:\Users\pkaro\Desktop\BazyDanych\Projekt\DB-Project\PROC_Buy.sql
 :r C:\Users\pkaro\Desktop\BazyDanych\Projekt\DB-Project\PROC_Delete_From_Cart.sql
+:r C:\Users\pkaro\Desktop\BazyDanych\Projekt\DB-Project\FUNC_Generate_Note.sql
 GO
 
 -- fill
