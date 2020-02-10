@@ -25,6 +25,3 @@ AS
 
 
 GO
-
-EXEC dbo.AddReview 1, 1, NULL, 5
-GO

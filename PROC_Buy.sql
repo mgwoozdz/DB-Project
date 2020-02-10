@@ -69,6 +69,3 @@ GO
 
 
 
-
-
-EXEC dbo.Buy @CustomerID = 1
