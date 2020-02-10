@@ -183,7 +183,7 @@ GO
 EXEC dbo.AddToCart @CustomerID = 1, @ProductID = 3, @Quantity = 7
 GO
 
-EXEC dbo.AddToCart @CustomerID = 2, @ProductID = 1, @Quantity = 2
+EXEC dbo.AddToCart @CustomerID = 2, @ProductID = 1, @Quantity = 3
 GO
 
 EXEC dbo.AddToCart @CustomerID = 3, @ProductID = 1, @Quantity = 1
