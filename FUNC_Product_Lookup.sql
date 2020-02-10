@@ -13,7 +13,7 @@ RETURN
 	FROM dbo.[Storage Status] AS Ss
 	JOIN dbo.[Products] AS Pr ON SS.[ProductID] = Pr.[ProductID]
 	JOIN dbo.[Brands] AS Br ON Pr.[BrandID] = Br.[BrandID]
-	WHERE (Ss.[Product Name] LIKE (@ProductName + '%')
+	WHERE Ss.[Product Name] LIKE @ProductName + '%'
 )
 ;
 GO
