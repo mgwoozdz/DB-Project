@@ -1,24 +1,6 @@
 /* FILL TABLES */
 
 SET NOCOUNT ON
-
--- PRINT 'Initialising Customers...'
--- INSERT INTO [dbo].[Customers]
--- VALUES
---   ('Celina Johansen')
--- , ('Cyryl Jensen')
--- , ('Cameron Moller')
--- , ('Carolina Moller')
--- , ('Cyryl Andersen')
--- , ('Cataleya Pedersen')
--- , ('Chanell Moller')
--- , ('Carmen Moller')
--- , ('Carla Christiansen')
--- , ('Cyprian Moller')
--- ;
--- PRINT 'Done.
--- '
-
   
 PRINT 'Initialising Customers...'
     EXEC dbo.AddCustomer @Name = 'Celina Johansen', @Email = 'celinajohansen@gmail.com', @PhoneNumber = '123456789', 
@@ -34,7 +16,7 @@ EXEC dbo.AddCustomer @Name = 'Cameron Moller', @Email = 'mollercameron@wp.pl', @
 GO
 
 PRINT 'Done.'
-
+GO
 
 
 
