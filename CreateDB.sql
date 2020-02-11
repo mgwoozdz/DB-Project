@@ -1,8 +1,4 @@
 /* CREATE DATABASE */
-
-PRINT 'Creating Database...'
-GO
-
 USE master;
 GO
 
