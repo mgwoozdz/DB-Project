@@ -51,3 +51,5 @@ PRINT 'Tables Filled.
 
 
 -- testing: 
+
+SELECT * FROM [dbo].[Product Lookup] ('')
