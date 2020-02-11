@@ -2,14 +2,22 @@
 PRINT 'Creating Database...'
 :r C:\Users\Mateusz\Desktop\DB-Project\CreateDB.sql
 GO
-PRINT 'Done.'
+PRINT 'Database created.
+	'
+
+	
+PRINT 'Deploying Views...'
+:r C:\Users\Mateusz\Desktop\DB-Project\VIEW_Products_Bought.sql --TESTED
+GO
+PRINT 'Views deployed.
+	'
 
 
--- add Triggers
 PRINT 'Deploying Triggers...'
 :r C:\Users\Mateusz\Desktop\DB-Project\TRIG_AssignBrandID.sql
 GO
-PRINT 'Done.'
+PRINT 'Triggers deployed.
+	'
 
 
 PRINT 'Deploying Procedures...'
@@ -19,29 +27,29 @@ PRINT 'Deploying Procedures...'
 :r C:\Users\Mateusz\Desktop\DB-Project\PROC_Buy.sql
 :r C:\Users\Mateusz\Desktop\DB-Project\PROC_Delete_From_Cart.sql
 GO
-PRINT 'Done.'
+PRINT 'Procedures deployed.
+	'
 
 
 PRINT 'Deploying Functions...'
 :r C:\Users\Mateusz\Desktop\DB-Project\FUNC_Generate_Note.sql
+GO
 :r C:\Users\Mateusz\Desktop\DB-Project\FUNC_Product_Bought.sql
 GO
-PRINT 'Done.'
+PRINT 'Functions deployed.
+	'
 
 
-PRINT 'Deploying Views...'
-:r C:\Users\Mateusz\Desktop\DB-Project\VIEW_Products_Bought.sql --TESTED
-GO
-PRINT 'Done.'
 
 
 PRINT 'Filling Tables...'
 :r C:\Users\Mateusz\Desktop\DB-Project\FillDB.sql
 GO
-PRINT 'Done.'
+PRINT 'Tables Filled.
+	'
 
 
--- testing
+-- testing: Product lookup
 :r C:\Users\Mateusz\Desktop\DB-Project\FUNC_Product_Lookup.sql
 
 SELECT * FROM [dbo].[Product Lookup]
