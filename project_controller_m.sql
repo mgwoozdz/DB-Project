@@ -7,7 +7,8 @@ PRINT 'Database created.
 
 	
 PRINT 'Deploying Views...'
-:r C:\Users\Mateusz\Desktop\DB-Project\VIEW_Products_Bought.sql --TESTED
+:r C:\Users\Mateusz\Desktop\DB-Project\VIEW_Products_Bought.sql
+--:r C:\Users\Mateusz\Desktop\DB-Project\VIEW_Storage_Status.sql
 GO
 PRINT 'Views deployed.
 	'
@@ -33,7 +34,6 @@ PRINT 'Procedures deployed.
 
 PRINT 'Deploying Functions...'
 :r C:\Users\Mateusz\Desktop\DB-Project\FUNC_Generate_Note.sql
-GO
 :r C:\Users\Mateusz\Desktop\DB-Project\FUNC_Product_Bought.sql
 GO
 PRINT 'Functions deployed.

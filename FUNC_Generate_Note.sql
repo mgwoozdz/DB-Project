@@ -40,5 +40,4 @@ VALUES(@OrderID, @CustomerName, @Amount, @OrderDate, @Quantity)
 RETURN 
 END
 
-
-
+GO
