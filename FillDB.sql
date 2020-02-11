@@ -1,6 +1,6 @@
 /* FILL TABLES */
 
--- SET NOCOUNT ON
+SET NOCOUNT ON
   
 PRINT 'Adding Customers...'
     EXEC dbo.AddCustomer @Name = 'Celina Johansen', @Email = 'celinajohansen@gmail.com', @PhoneNumber = '123456789', 
@@ -205,9 +205,7 @@ GO*/
 PRINT 'Done.'
 
 
--- SET NOCOUNT OFF
-
-PRINT 'Tables filled successfully.'
+SET NOCOUNT OFF
 
 /* /FILL TABLES */
 --------------------------------------------------------------------
