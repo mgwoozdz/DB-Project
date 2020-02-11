@@ -9,19 +9,9 @@ GO
 CREATE DATABASE TestDB;
 GO
 
-PRINT 'Done.
-    '
-GO
-
-PRINT 'Switching to database...'
-GO
-
 USE TestDB;
 GO
 
-PRINT 'Done.
-    '
-GO
 /* /CREATE DATABASE */
 --------------------------------------------------------------------
 /* CREATE TABLES */
