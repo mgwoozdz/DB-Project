@@ -25,5 +25,3 @@ Zaprojektuj i zaimplementuj bazę danych służącą do gromadzenia i przetwarza
 - [ ] typowe zapytania
 
 Po oddaniu opisu projektu odbędzie się obrona. Projekt można wykonywać w grupach maksymalnie trzyosobowych. Temat projektu w ramach grupy powinien być unikalny - o przydziale tematu decyduje prowadzący zajęcia, w decyzji będzie uwzględniona kolejność zgłoszeń (przez e-mail lub osobiście).
-
-Projekt należy oddać w terminie, który umożliwi wpisanie oceny z zaliczenia przed egzaminem.
