@@ -19,7 +19,7 @@ GO
 GO
 
 -- Views
-PRINT 'Initiaising Views...'
+PRINT 'Deploying Views...'
 :r C:\Users\Mateusz\Desktop\DB-Project\VIEW_Products_Bought.sql
 GO
 PRINT 'Done.'
