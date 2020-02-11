@@ -15,7 +15,7 @@ AS
 	
 	IF @CustomerID IS NULL OR @ProductID IS NULL OR @Rating IS NULL
 	BEGIN
-		SET @error = 'Error! Rating invalid! Rating aborted.';
+		SET @error = 'Error! Rating lacking information.';
 		RAISERROR(@error, 16,1);
 		RETURN;
 	END
