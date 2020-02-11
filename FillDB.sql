@@ -204,10 +204,24 @@ GO*/
 
 PRINT 'Done.'
 
+PRINT 'Adding Reviews ...'
+EXEC dbo.AddReview @CustomerID = 2, @ProductID = 1, @Content = 'Super, Polecam!', @Rating = 4
+GO
+EXEC dbo.AddReview @CustomerID = 3, @ProductID = 2, @Content = 'Może być.', @Rating = 3
+
+PRINT 'Done.'
+
+PRINT 'Adding Reviews Ratings ...'
+EXEC dbo.AddReviewRating @CustomerID = 1, @ReviewID = 1, @PlusMinus = '+'
+GO
+EXEC dbo.AddReviewRating @CustomerID = 3, @ReviewID = 1, @PlusMinus = '-'
+
 
 -- SET NOCOUNT OFF
 
 PRINT 'Tables filled successfully.'
 
+
+GO
 /* /FILL TABLES */
 --------------------------------------------------------------------
