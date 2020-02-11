@@ -12,7 +12,7 @@ PRINT 'Done.'
 :r C:\Users\Mateusz\Desktop\DB-Project\PROC_Add_Customer.sql
 GO
 
--- BUY functionality
+-- add Buying functionality
 :r C:\Users\Mateusz\Desktop\DB-Project\PROC_Add_Review.sql
 :r C:\Users\Mateusz\Desktop\DB-Project\PROC_Add_To_Cart.sql
 :r C:\Users\Mateusz\Desktop\DB-Project\PROC_Buy.sql
@@ -32,5 +32,3 @@ GO
 
 
 -- testing
---SELECT * FROM dbo.[Products Bought]
-
