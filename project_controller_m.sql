@@ -22,7 +22,7 @@ GO
 
 -- Views
 PRINT 'Deploying Views...'
-:r C:\Users\Mateusz\Desktop\DB-Project\VIEW_Products_Bought.sql
+:r C:\Users\Mateusz\Desktop\DB-Project\VIEW_Products_Bought.sql --TESTED
 GO
 PRINT 'Done.'
 
@@ -31,10 +31,6 @@ PRINT 'Done.'
 GO
 
 
-
 -- testing
-GO
-
-
-SELECT * FROM dbo.[Products Bought]
+--SELECT * FROM dbo.[Products Bought]
 

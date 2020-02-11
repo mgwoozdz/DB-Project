@@ -1,8 +1,8 @@
 /* FILL TABLES */
 
-SET NOCOUNT ON
+-- SET NOCOUNT ON
   
-PRINT 'Initialising Customers...'
+PRINT 'Adding Customers...'
     EXEC dbo.AddCustomer @Name = 'Celina Johansen', @Email = 'celinajohansen@gmail.com', @PhoneNumber = '123456789', 
 @Addres = 'Skarbowa 16', @PostalCode =  '30-056', @City = 'Krakow'
 GO
@@ -36,7 +36,7 @@ GO
    -- ;
     --
     
-PRINT 'Initialising Categories...'
+PRINT 'Adding Categories...'
 INSERT INTO [dbo].[Categories] VALUES
   (1, 'Twarz')
 , (2, 'Usta')
@@ -51,7 +51,7 @@ PRINT 'Done.
 '
 GO
 
-PRINT 'Initialising Subcategories...'
+PRINT 'Adding Subcategories...'
 INSERT INTO [dbo].[Subcategories] VALUES
 -- Twarz
   (1, 'Podkłady')
@@ -108,14 +108,14 @@ PRINT 'Done.
 '
 GO
 
-PRINT 'Initialising Brands...'
+PRINT 'Adding Brands...'
 INSERT INTO [dbo].[Brands] VALUES
   ('Hello Kitty') -- test
 PRINT 'Done.
 '
 GO
 
-PRINT 'Initialising Products...'
+PRINT 'Adding Products...'
 INSERT INTO [dbo].[New Products] VALUES
   ('Revlon', 'Colorstay', 'podkład z pompką do cery tłustej i mieszanej, 30 ml', 1, 1, 24, 48.99)
 , ('Gosh', 'X-CEPTIONAL WEAR', 'kryjący podkład do twarzy w kremie do twarzy, 35 ml', 1, 1, 21, 41.99) --Gosh
@@ -126,7 +126,7 @@ PRINT 'Done.
 '
 GO
 
-PRINT 'Initialising Departments...'
+PRINT 'Adding Departments...'
 INSERT INTO [dbo].[Departments] VALUES
   (1, 'Management')
 , (2, 'IT')
@@ -137,7 +137,7 @@ PRINT 'Done.
 '
 GO
 
-PRINT 'Initialising Employees...'
+PRINT 'Adding Employees...'
 INSERT INTO [dbo].[Employees] VALUES
   ('Eryk Sorensen', 4)
 , ('Elif Jensen', 3)
@@ -154,7 +154,7 @@ PRINT 'Done.
 '
 GO
 
-PRINT 'Initialising Storage...'
+PRINT 'Adding Storage...'
 INSERT INTO [dbo].[Storage] VALUES
   (1, 1000, 1000)
 , (2, 1000, 1000)
@@ -163,7 +163,6 @@ INSERT INTO [dbo].[Storage] VALUES
 PRINT 'Done.
 '
 GO
-
 
 
 PRINT 'Adding some products to carts'
@@ -194,6 +193,7 @@ GO
 
 PRINT 'Done.'
 
+
 PRINT 'Buying products...'
 EXEC dbo.Buy @CustomerID = 1
 GO
@@ -205,8 +205,7 @@ GO*/
 PRINT 'Done.'
 
 
-
-SET NOCOUNT OFF
+-- SET NOCOUNT OFF
 
 PRINT 'Tables filled successfully.'
 
