@@ -16,6 +16,7 @@ RETURN
 	WHERE Ss.[Product Name] LIKE @ProductName + '%'
 )
 ;
+
 GO
 
 -- TODO: NEEDS TESTING

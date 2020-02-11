@@ -8,7 +8,7 @@ PRINT 'Database created.
 	
 PRINT 'Deploying Views...'
 :r C:\Users\Mateusz\Desktop\DB-Project\VIEW_Products_Bought.sql
---:r C:\Users\Mateusz\Desktop\DB-Project\VIEW_Storage_Status.sql
+:r C:\Users\Mateusz\Desktop\DB-Project\VIEW_Storage_Status.sql
 GO
 PRINT 'Views deployed.
 	'
@@ -35,6 +35,7 @@ PRINT 'Procedures deployed.
 PRINT 'Deploying Functions...'
 :r C:\Users\Mateusz\Desktop\DB-Project\FUNC_Generate_Note.sql
 :r C:\Users\Mateusz\Desktop\DB-Project\FUNC_Product_Bought.sql
+:r C:\Users\Mateusz\Desktop\DB-Project\FUNC_Product_Lookup.sql
 GO
 PRINT 'Functions deployed.
 	'
@@ -49,7 +50,4 @@ PRINT 'Tables Filled.
 	'
 
 
--- testing: Product lookup
-:r C:\Users\Mateusz\Desktop\DB-Project\FUNC_Product_Lookup.sql
-
-SELECT * FROM [dbo].[Product Lookup]
+-- testing: 
