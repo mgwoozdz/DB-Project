@@ -321,7 +321,8 @@ CREATE TABLE [dbo].[Review Ratings]
           ON UPDATE CASCADE
         , [CustomerID] INT NOT NULL
         , CONSTRAINT [FK_ReviewRatings_Customers] FOREIGN KEY (CustomerID)
-          REFERENCES [dbo].[Customers] (CustomerID)
+          REFERENCES [dbo].[Customers] (CustomerID),
+          [Plus/Minus] CHAR(1)
     )
 ;
 GO
