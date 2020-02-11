@@ -10,8 +10,7 @@ CREATE PROC dbo.AddReview
 @Rating TINYINT = NULL
 
 AS
-
-	DECLARE @error AS NVARCHAR(100);
+	DECLARE @error AS NVARCHAR(50);
 	
 	IF @CustomerID IS NULL OR @ProductID IS NULL OR @Rating IS NULL
 	BEGIN
@@ -22,6 +21,5 @@ AS
 
 	INSERT INTO dbo.[Reviews] VALUES
 	(@CustomerID, @ProductID, @Content, @Rating)
-
 
 GO
