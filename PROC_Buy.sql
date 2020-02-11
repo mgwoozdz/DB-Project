@@ -67,9 +67,9 @@ WHERE CartID = @CartID
 INSERT INTO Carts(CustomerID)
 VALUES (@CustomerID)
 
-
+/*
 SELECT * FROM dbo.GenerateNote (@OrderID)
 GO
-
+*/
 
 

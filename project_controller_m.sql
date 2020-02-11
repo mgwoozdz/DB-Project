@@ -1,10 +1,12 @@
--- create tables
+-- create Tables
 :r C:\Users\Mateusz\Desktop\DB-Project\CreateDB.sql
 GO
 
--- new products trigg
+-- Triggers
+PRINT 'Deploying Triggers...'
 :r C:\Users\Mateusz\Desktop\DB-Project\TRIG_AssignBrandID.sql
 GO
+PRINT 'Done.'
 
 -- add customers
 :r C:\Users\Mateusz\Desktop\DB-Project\PROC_Add_Customer.sql
