@@ -42,3 +42,6 @@ PRINT 'Done.'
 
 
 -- testing
+:r C:\Users\Mateusz\Desktop\DB-Project\FUNC_Product_Lookup.sql
+
+SELECT * FROM [dbo].[Product Lookup]
