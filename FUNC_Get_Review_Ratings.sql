@@ -1,10 +1,10 @@
 USE TestDB
 GO
 
-DROP FUNCTION IF EXISTS [dbo].[ReviewRatings]
+DROP FUNCTION IF EXISTS [dbo].[Get Review Ratings]
 GO
 
-CREATE FUNCTION dbo.ReviewRatings (@ReviewID INT)
+CREATE FUNCTION [dbo].[Get Review Ratings] (@ReviewID INT)
 RETURNS  @Raitings TABLE(
 ReviewID INT,
 Pluses INT,
