@@ -5,16 +5,26 @@ DROP FUNCTION IF EXISTS [dbo].[ReviewRatings]
 GO
 
 CREATE FUNCTION dbo.ReviewRatings (@ReviewID INT)
-RETURNS TABLE
+RETURNS  @Raitings TABLE(
+ReviewID INT,
+Pluses INT,
+Minuses INT
+)
 AS
 BEGIN
+DECLARE @Pluses INT
+SELECT @Pluses = COUNT(*) FROM [Review Ratings] 
+WHERE ReviewID = @ReviewID AND [Plus/Minus] = '+'
 
+DECLARE @Minuses INT
+SELECT @Minuses = COUNT(*) FROM [Review Ratings] 
+WHERE ReviewID = @ReviewID AND [Plus/Minus] = '-'
 
+INSERT INTO @Raitings VALUES(@ReviewID, @Pluses, @Minuses)
 
-
-RETURN SELECT RR1.ReviewID, RR1.COUNT(*) AS Pluses, P.Minues FROM [Review Ratings] AS RR1 JOIN (SELECT ReviewID, COUNT(*) AS Minues FROM 
-[Review Ratings] GROUP BY ReviewID WHERE [Plus/Minus] = '-') AS P ON RR1.ReviewID P.ReviewID
-WHERE RR1.[Plus/Minus] ='+'
+RETURN
 END
 
 GO
+
+SELECT * from dbo.ReviewRatings(1)
