@@ -41,8 +41,6 @@ PRINT 'Functions deployed.
 	'
 
 
-
-
 PRINT 'Filling Tables...'
 :r C:\Users\Mateusz\Desktop\DB-Project\FillDB.sql
 GO

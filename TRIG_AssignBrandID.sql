@@ -26,3 +26,5 @@ BEGIN
 	JOIN [dbo].[Brands] AS B ON I.[Brand Name] = B.[Brand Name]
 
 END;
+
+GO
