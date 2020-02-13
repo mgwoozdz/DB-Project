@@ -17,7 +17,7 @@ GO
 :r C:\Users\pkaro\Desktop\BazyDanych\Projekt\DB-Project\PROC_Buy.sql
 :r C:\Users\pkaro\Desktop\BazyDanych\Projekt\DB-Project\PROC_Delete_From_Cart.sql
 :r C:\Users\pkaro\Desktop\BazyDanych\Projekt\DB-Project\FUNC_Generate_Note.sql
-
+:r C:\Users\pkaro\Desktop\BazyDanych\Projekt\DB-Project\FUNC_Avg_Product_Rate.sql
 GO
 
 -- fill
@@ -31,7 +31,8 @@ GO
 GO
 
 
-SELECT * FROM [Products]
-SELECT * FROM [Orders]
-SELECT * FROM [Order Details]
-SELECT * FROM [Products Bought] ORDER BY Quantity DESC
+--SELECT * FROM [Products]
+--SELECT * FROM [Orders]
+--SELECT * FROM [Order Details]
+--SELECT * FROM [Products Bought] ORDER BY Quantity DESC
+select * from dbo.AddReviewRating(1)

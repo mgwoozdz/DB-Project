@@ -205,9 +205,12 @@ GO*/
 PRINT 'Done.'
 
 PRINT 'Adding Reviews ...'
-EXEC dbo.AddReview @CustomerID = 2, @ProductID = 1, @Content = 'Super, Polecam!', @Rating = 4
+EXEC dbo.AddReview @CustomerID = 2, @ProductID = 1, @Content = 'Super, Polecam!', @Rating = 5
 GO
 EXEC dbo.AddReview @CustomerID = 3, @ProductID = 2, @Content = 'Może być.', @Rating = 3
+GO
+EXEC dbo.AddReview @CustomerID = 3, @ProductID = 1, @Content = 'Nawet, nawet', @Rating = 3
+GO
 
 PRINT 'Done.'
 
