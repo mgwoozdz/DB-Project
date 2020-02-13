@@ -18,7 +18,7 @@ GO
 :r C:\Users\pkaro\Desktop\BazyDanych\Projekt\DB-Project\PROC_Delete_From_Cart.sql
 :r C:\Users\pkaro\Desktop\BazyDanych\Projekt\DB-Project\FUNC_Generate_Note.sql
 :r C:\Users\pkaro\Desktop\BazyDanych\Projekt\DB-Project\FUNC_Avg_Product_Rate.sql
-:r C:\Users\pkaro\Desktop\BazyDanych\Projekt\DB-Project\FUNC_Review_Ratings.sql
+:r C:\Users\pkaro\Desktop\BazyDanych\Projekt\DB-Project\FUNC_Get_Review_Ratings.sql
 
 GO
 
