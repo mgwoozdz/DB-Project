@@ -1,3 +1,9 @@
+USE TestDB;
+GO
+
+DROP TRIGGER IF EXISTS [dbo].[Guard Categories];
+GO
+
 CREATE TRIGGER [dbo].[Guard Categories] ON [dbo].[Categories]
 INSTEAD OF DELETE, UPDATE
 AS
