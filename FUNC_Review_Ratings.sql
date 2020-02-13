@@ -24,7 +24,4 @@ INSERT INTO @Raitings VALUES(@ReviewID, @Pluses, @Minuses)
 
 RETURN
 END
-
 GO
-
-SELECT * from dbo.ReviewRatings(1)
