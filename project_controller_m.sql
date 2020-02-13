@@ -44,6 +44,7 @@ PRINT 'Functions deployed.
 
 PRINT 'Deploying Triggers...'
 :r C:\Users\Mateusz\Desktop\DB-Project\TRIG_AssignBrandID.sql
+:r C:\Users\Mateusz\Desktop\DB-Project\TRIG_Guard_Categories.sql
 GO
 PRINT 'Triggers deployed.
 	'
