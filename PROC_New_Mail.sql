@@ -1,5 +1,6 @@
-IF OBJECT_ID('dbo.AddReview', 'P') IS NOT NULL
-DROP PROC dbo.AddReview
+DROP PROC IF EXISTS [dbo].[New Mail]
 GO
 
-CREATE PROC dbo.AddReview
+CREATE PROC [dbo].[New Mail]
+@CustomerID INT NOT NULL,
+@Topic VARCHAR(50),
