@@ -19,7 +19,7 @@ RETURN;
     DECLARE @TopicContent VARCHAR(50) = 'Newsletter sklepu'
     DECLARE @BodyContent VARCHAR(MAX) = 'Nowe produkty dostępne już dziś! Sprawdź!'
 
-    DECLARE c CURSOR
+    DECLARE c CURSOR 
     FOR SELECT [CustomerID] FROM [dbo].[Customers]
     WHERE [Mailing List] = 1 AND [Account Confirmed] = 1
 
