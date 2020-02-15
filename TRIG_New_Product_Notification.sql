@@ -20,4 +20,4 @@ IF (@@ROWCOUNT = 0)
 RETURN;
 	
     DECLARE @TopicContent VARCHAR(50) = 'Newsletter sklepu'
-    DECLARE @BodyContent VARCHAR(MAX) = 'Nowe produkty! Sprawdź!'
+    DECLARE @BodyContent VARCHAR(MAX) = 'Nowe produkty dostępne już dziś! Sprawdź!'
