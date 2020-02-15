@@ -29,6 +29,7 @@ PRINT 'Deploying Procedures...'
 :r C:\Users\Mateusz\Desktop\DB-Project\PROC_Buy.sql
 :r C:\Users\Mateusz\Desktop\DB-Project\PROC_Delete_From_Cart.sql
 :r C:\Users\Mateusz\Desktop\DB-Project\PROC_New_Mail.sql
+:r C:\Users\Mateusz\Desktop\DB-Project\PROC_Confirm_Account.sql
 GO
 PRINT 'Procedures deployed.
 	'
@@ -62,10 +63,3 @@ Tables Filled.
 GO
 
 -- testing
-:r C:\Users\Mateusz\Desktop\DB-Project\PROC_Confirm_Account.sql
-
-SELECT * FROM Customers
-
-EXEC dbo.[Confirm Account] 1
-
-SELECT * FROM Customers
