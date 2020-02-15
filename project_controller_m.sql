@@ -63,3 +63,9 @@ GO
 
 -- testing
 :r C:\Users\Mateusz\Desktop\DB-Project\PROC_Confirm_Account.sql
+
+SELECT * FROM Customers
+
+EXEC dbo.[Confirm Account] 1
+
+SELECT * FROM Customers
