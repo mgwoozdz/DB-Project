@@ -1,3 +1,11 @@
+/*
+
+task: notify every subscribed customer about every new produt
+
+for this we need mail functionality
+
+*/
+
 USE TestDB;
 GO
 
@@ -10,4 +18,3 @@ AFTER INSERT
 AS
 IF (@@ROWCOUNT = 0)
 RETURN;
-	
