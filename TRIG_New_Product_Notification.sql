@@ -21,7 +21,7 @@ RETURN;
 
     DECLARE c CURSOR
     FOR SELECT [CustomerID] FROM [dbo].[Customers]
-    WHERE [Mailing List] = 1
+    WHERE [Mailing List] = 1 AND [Account Confirmed] = 1
 
     DECLARE @cID INT
 
