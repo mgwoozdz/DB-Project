@@ -74,6 +74,10 @@ GO
 DROP TABLE IF EXISTS [dbo].[New Products] ;
 GO
 
+DROP TABLE IF EXISTS [dbo].[Mail Queue] ;
+GO
+
+
 
 PRINT 'Done.
     '
@@ -94,7 +98,23 @@ CREATE TABLE [dbo].[Customers]
         , [Addres] NVARCHAR(40)
         , [Postal Code] NVARCHAR(8)
         , [City] NVARCHAR(25)
+        , [Mailing List] BIT NOT NULL DEFAULT 1
      )
+;
+GO
+
+-- Mail Queue
+CREATE TABLE [dbo].[Mail Queue]
+    (
+        [MailID] INT IDENTITY(1,1) NOT NULL
+        , CONSTRAINT [PK_Mail_Queue] PRIMARY KEY (MailID)
+        , [RecipentID] INT NOT NULL
+        , CONSTRAINT [FK_Mail_Customer] FOREIGN KEY (RecipentID)
+          REFERENCES [dbo].[Customers] (CustomerID)
+          ON DELETE CASCADE
+          ON UPDATE CASCADE 
+        , [Topic] VARCHAR(50) NOT NULL
+    )
 ;
 GO
 
