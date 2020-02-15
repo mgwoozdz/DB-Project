@@ -219,6 +219,7 @@ EXEC dbo.AddReviewRating @CustomerID = 1, @ReviewID = 1, @PlusMinus = '+'
 GO
 EXEC dbo.AddReviewRating @CustomerID = 3, @ReviewID = 1, @PlusMinus = '-'
 
+PRINT 'Done.'
 
 SET NOCOUNT OFF
 
