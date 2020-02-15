@@ -28,6 +28,7 @@ PRINT 'Deploying Procedures...'
 :r C:\Users\Mateusz\Desktop\DB-Project\PROC_Add_To_Cart.sql
 :r C:\Users\Mateusz\Desktop\DB-Project\PROC_Buy.sql
 :r C:\Users\Mateusz\Desktop\DB-Project\PROC_Delete_From_Cart.sql
+:r C:\Users\Mateusz\Desktop\DB-Project\PROC_New_Mail.sql
 GO
 PRINT 'Procedures deployed.
 	'
@@ -46,6 +47,7 @@ PRINT 'Functions deployed.
 PRINT 'Deploying Triggers...'
 :r C:\Users\Mateusz\Desktop\DB-Project\TRIG_AssignBrandID.sql
 :r C:\Users\Mateusz\Desktop\DB-Project\TRIG_Guard_Categories.sql
+:r C:\Users\Mateusz\Desktop\DB-Project\TRIG_New_Product_Notification.sql
 GO
 PRINT 'Triggers deployed.
 	'
@@ -58,3 +60,5 @@ PRINT '
 Tables Filled.
 	'
 GO
+
+-- testing
