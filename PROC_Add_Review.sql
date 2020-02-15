@@ -3,7 +3,6 @@ DROP PROC dbo.AddReview
 GO
 
 CREATE PROC dbo.AddReview
-
 @CustomerID INT = NULL,
 @ProductID INT = NULL,
 @Content NTEXT = NULL,
