@@ -62,3 +62,4 @@ Tables Filled.
 GO
 
 -- testing
+:r C:\Users\Mateusz\Desktop\DB-Project\PROC_Confirm_Account.sql
