@@ -114,6 +114,7 @@ CREATE TABLE [dbo].[Mail Queue]
           ON DELETE CASCADE
           ON UPDATE CASCADE 
         , [Topic] VARCHAR(50) NOT NULL
+        , [Body] VARCHAR(MAX) NOT NULL
     )
 ;
 GO
