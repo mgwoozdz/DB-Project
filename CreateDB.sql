@@ -99,6 +99,7 @@ CREATE TABLE [dbo].[Customers]
         , [Postal Code] NVARCHAR(8)
         , [City] NVARCHAR(25)
         , [Mailing List] BIT NOT NULL DEFAULT 1
+        , [Account Confirmed] BIT NOT NULL DEFAULT 0
      )
 ;
 GO
