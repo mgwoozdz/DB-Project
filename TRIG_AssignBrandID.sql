@@ -25,6 +25,6 @@ BEGIN
     FROM INSERTED AS I
 	JOIN [dbo].[Brands] AS B ON I.[Brand Name] = B.[Brand Name]
 
-END;
+END
 
 GO

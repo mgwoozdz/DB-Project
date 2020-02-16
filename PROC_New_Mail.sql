@@ -1,7 +1,7 @@
 USE TestDB;
 GO
 
-DROP PROC IF EXISTS [dbo].[New Mail]
+DROP PROC IF EXISTS [dbo].[New Mail];
 GO
 
 CREATE PROC [dbo].[New Mail]
@@ -11,12 +11,6 @@ CREATE PROC [dbo].[New Mail]
 AS
 BEGIN
 
-
-    -- sprawdzic czy istnieje klient o podanym ID
-    -- tabela Mail Queue nie przyjmie niepoprawnego, więc nie trzeba
-
-    -- sprawdzic czy ktorekolwiek jest nullem
-    -- jak tak to errorowac
     IF @CustomerID IS NULL OR @Topic IS NULL OR @Body IS NULL
     BEGIN
         DECLARE @error NVARCHAR(50) = 'Error! Mail elements missing!';
@@ -30,4 +24,5 @@ BEGIN
     (@CustomerID, @Topic, @Body)
 
 END
+
 GO

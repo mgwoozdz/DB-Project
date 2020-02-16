@@ -1,7 +1,7 @@
-USE TestDB
+USE TestDB;
 GO
 
-DROP FUNCTION IF EXISTS [dbo].[AvgProductRate]
+DROP FUNCTION IF EXISTS [dbo].[AvgProductRate];
 GO
 
 CREATE FUNCTION dbo.AvgProductRate (@ProductID INT)

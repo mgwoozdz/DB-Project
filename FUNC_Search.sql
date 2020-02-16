@@ -1,7 +1,7 @@
-USE TestDB
+USE TestDB;
 GO
 
-DROP FUNCTION IF EXISTS [dbo].[Search]
+DROP FUNCTION IF EXISTS [dbo].[Search];
 GO
 
 CREATE FUNCTION dbo.Search (@BrandName NVARCHAR(20) = '%', @CategoryName NVARCHAR(20) ='%', @Subcategory NVARCHAR(40) ='%', 
@@ -25,8 +25,7 @@ RETURN
 			[Retail Price] <=@MaxPrice
  			)
 )
-;
+
 GO
 
-
-SELECT * FROM Search(DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT )
+-- SELECT * FROM Search(DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT )

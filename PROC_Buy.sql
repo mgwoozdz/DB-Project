@@ -1,9 +1,7 @@
-GO
-USE TestDB
+USE TestDB;
 GO
 
-IF OBJECT_ID('dbo.Buy', 'P') IS NOT NULL
-DROP PROC dbo.Buy
+DROP PROC IF EXISTS dbo.Buy;
 GO
 
 CREATE PROC dbo.Buy
@@ -67,9 +65,4 @@ WHERE CartID = @CartID
 INSERT INTO Carts(CustomerID)
 VALUES (@CustomerID)
 
-/*
-SELECT * FROM dbo.GenerateNote (@OrderID)
 GO
-*/
-
-

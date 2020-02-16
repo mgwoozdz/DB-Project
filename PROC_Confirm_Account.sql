@@ -1,7 +1,7 @@
 USE TestDB;
 GO
 
-DROP PROC IF EXISTS [dbo].[Confirm Account]
+DROP PROC IF EXISTS [dbo].[Confirm Account];
 GO
 
 CREATE PROC [dbo].[Confirm Account]

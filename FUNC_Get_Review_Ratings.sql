@@ -1,7 +1,7 @@
-USE TestDB
+USE TestDB;
 GO
 
-DROP FUNCTION IF EXISTS [dbo].[Get Review Ratings]
+DROP FUNCTION IF EXISTS [dbo].[Get Review Ratings];
 GO
 
 CREATE FUNCTION [dbo].[Get Review Ratings] (@ReviewID INT)
@@ -24,4 +24,5 @@ INSERT INTO @Raitings VALUES(@ReviewID, @Pluses, @Minuses)
 
 RETURN
 END
+
 GO

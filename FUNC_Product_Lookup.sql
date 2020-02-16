@@ -1,7 +1,7 @@
-USE TestDB
+USE TestDB;
 GO
 
-DROP FUNCTION IF EXISTS [dbo].[Product Lookup]
+DROP FUNCTION IF EXISTS [dbo].[Product Lookup];
 GO
 
 CREATE FUNCTION dbo.[Product Lookup] (@ProductName NVARCHAR(40) = '%')
@@ -18,6 +18,5 @@ RETURN
 	WHERE Ss.[Product Name] LIKE @ProductName + '%'
 		OR Br.[Brand Name] LIKE @ProductName + '%' 
 )
-;
 
 GO

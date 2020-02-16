@@ -1,9 +1,7 @@
-IF OBJECT_ID('dbo.AddToCart', 'P') IS NOT NULL
-BEGIN
+USE TestDB;
+GO
 
-DROP PROC dbo.AddToCart
-PRINT 'Dropped'
-END
+DROP PROC IF EXISTS dbo.AddToCart;
 GO
 
 
@@ -66,4 +64,4 @@ BEGIN
      RETURN;
 END
 
-
+GO

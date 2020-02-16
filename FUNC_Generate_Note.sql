@@ -1,7 +1,7 @@
-USE TestDB
+USE TestDB;
 GO
 
-DROP FUNCTION IF EXISTS [dbo].[GenerateNote]
+DROP FUNCTION IF EXISTS [dbo].[GenerateNote];
 GO
 
 CREATE FUNCTION dbo.GenerateNote (@OrderID INT)

@@ -1,8 +1,3 @@
-/*
-task: notify every subscribed customer about every new produt
-meaning: send mail after every insert to Products table
-*/
-
 USE TestDB;
 GO
 

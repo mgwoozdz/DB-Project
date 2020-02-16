@@ -100,7 +100,7 @@ CREATE TABLE [dbo].[Customers]
         , [City] NVARCHAR(25)
         , [Mailing List] BIT NOT NULL DEFAULT 1
         , [Account Confirmed] BIT NOT NULL DEFAULT 0
-     )
+    )
 ;
 GO
 

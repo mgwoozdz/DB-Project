@@ -1,8 +1,7 @@
-USE TestDB
+USE TestDB;
 GO
 
-IF OBJECT_ID('dbo.AddCustomer', 'P') IS NOT NULL
-DROP PROC dbo.AddCustomer
+DROP PROC IF EXISTS dbo.AddCustomer;
 GO
 
 CREATE PROC dbo.AddCustomer
@@ -31,5 +30,5 @@ VALUES (@Name, @Email, @PhoneNumber, @Addres, @PostalCode, @City);
 
 INSERT INTO Carts(CustomerID)
 VALUES ((SELECT CustomerID FROM Customers WHERE [Email Addres] = @Email))
-GO
 
+GO

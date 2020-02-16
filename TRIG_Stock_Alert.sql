@@ -19,5 +19,3 @@ SELECT FORMATMESSAGE('Alert! Some products are out of stock! Notify Logistics De
     AS [System Notification];
 
 GO
-
-    

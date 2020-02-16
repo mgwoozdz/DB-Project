@@ -1,5 +1,7 @@
-IF OBJECT_ID('dbo.AddReview', 'P') IS NOT NULL
-DROP PROC dbo.AddReview
+USE TestDB;
+GO
+
+DROP PROC IF EXISTS dbo.AddReview;
 GO
 
 CREATE PROC dbo.AddReview

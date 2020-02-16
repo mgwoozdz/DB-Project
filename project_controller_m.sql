@@ -9,15 +9,10 @@ PRINT 'Database created.
 PRINT 'Deploying Views...'
 :r C:\Users\Mateusz\Desktop\DB-Project\VIEW_Products_Bought.sql
 :r C:\Users\Mateusz\Desktop\DB-Project\VIEW_Storage_Status.sql
+:r C:\Users\Mateusz\Desktop\DB-Project\VIEW_Hot_Brands.sql
+:r C:\Users\Mateusz\Desktop\DB-Project\VIEW_Category_Organisation.sql
 GO
 PRINT 'Views deployed.
-	'
-
-
-PRINT 'Deploying Triggers...'
-:r C:\Users\Mateusz\Desktop\DB-Project\TRIG_AssignBrandID.sql
-GO
-PRINT 'Triggers deployed.
 	'
 
 

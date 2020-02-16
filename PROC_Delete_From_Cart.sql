@@ -1,7 +1,7 @@
+USE TestDB;
+GO
 
-
-IF OBJECT_ID('dbo.DeleteFromCart', 'P') IS NOT NULL
-DROP PROC dbo.DeleteFromCart
+DROP PROC IF EXISTS dbo.DeleteFromCart;
 GO
 
 CREATE PROC dbo.DeleteFromCart
@@ -66,8 +66,4 @@ ELSE
      RETURN;
     END
 
-go
-
-
-    
-
+GO
