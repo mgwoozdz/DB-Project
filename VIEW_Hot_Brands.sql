@@ -1,6 +1,6 @@
 USE TestDB
+;
 GO
-
 
 DROP VIEW IF EXISTS [dbo].[HotBrands]
 ;
@@ -15,7 +15,3 @@ Order by Quantity DESC
 
 ;
 GO
-
-
-SELECT * FROM [HotBrands]
-
