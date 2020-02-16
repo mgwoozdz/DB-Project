@@ -1,6 +1,7 @@
 -- widok pokazujacy ile bylo w sumie zamowien kazdego produktu z osobna
 
 USE TestDB
+;
 GO
 
 DROP VIEW IF EXISTS [dbo].[Products Bought]
@@ -16,6 +17,6 @@ JOIN (SELECT P.ProductID, SUM(OD.Quantity) AS [Quantity]
     JOIN [dbo].[Order Details] AS OD ON P.ProductID = OD.ProductID
     GROUP BY P.ProductID) AS Pr ON P.ProductID = Pr.ProductID
 JOIN [dbo].[Brands] AS B ON P.BrandID = B.BrandID
-
+;
 
 GO
