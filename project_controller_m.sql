@@ -49,6 +49,7 @@ PRINT 'Deploying Triggers...'
 :r C:\Users\Mateusz\Desktop\DB-Project\TRIG_AssignBrandID.sql
 :r C:\Users\Mateusz\Desktop\DB-Project\TRIG_Guard_Categories.sql
 :r C:\Users\Mateusz\Desktop\DB-Project\TRIG_New_Product_Notification.sql
+:r C:\Users\Mateusz\Desktop\DB-Project\TRIG_Confirmation_Email.sql
 GO
 PRINT 'Triggers deployed.
 	'
