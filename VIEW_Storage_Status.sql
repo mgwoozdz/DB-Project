@@ -1,4 +1,5 @@
 USE TestDB
+;
 GO
 
 DROP VIEW IF EXISTS [dbo].[Storage Status]
@@ -14,7 +15,3 @@ FROM [dbo].[Storage] AS S
 RIGHT JOIN [dbo].[Products] AS P ON S.ProductID = P.ProductID
 ;
 GO
-
--- SELECT * FROM [Storage]
--- SELECT * FROM [Products]
--- SELECT * FROM [Storage Status]
