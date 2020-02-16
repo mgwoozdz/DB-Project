@@ -5,9 +5,9 @@ Zaprojektuj i zaimplementuj bazę danych służącą do gromadzenia i przetwarza
 - [x] 8 poprawnie zaprojektowanych tabel (na osobę), przy czym w bazie danych powinno byc minimum 10 tabel
 - [x] baza powinna zawierać dane dotyczące atrybutów, których wartość zmienia się w czasie
 - [x] baza powinna zawierać tabele realizujące jeden ze schematów dziedziczenia
-- [ ] 10 widoków lub funkcji
+- [x] 10 widoków lub funkcji
 - [x] 5 procedur
-- [ ] 5 wyzwalaczy
+- [x] 5 wyzwalaczy
 - [ ] należy zaprojektować strategię pielęgnacji bazy danych (kopie zapasowe)
 - [ ] można utworzyć dwa programy klienckie: jeden umożliwiający pracę administratorów (użytkowników ze zwiększonymi uprawnieniami), drugi umożliwiający pracę zwykłych użytkowników
 
