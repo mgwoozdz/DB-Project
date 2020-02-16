@@ -19,6 +19,12 @@ PRINT 'Done.'
 GO
 
 
+PRINT 'Confirming some Customers...'
+EXEC dbo.[Confirm Account] 1
+PRINT 'Done.'
+GO
+
+
 
 
    -- INSERT INTO [dbo].[Customers] --name, addresmail, phone, addres, postal code, city
