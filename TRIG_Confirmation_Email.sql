@@ -11,12 +11,12 @@ AS
 IF (@@ROWCOUNT = 0)
 RETURN;
 	
-    DECLARE @TopicContent VARCHAR(50) = 'Witamy w Sklepie!'
+    DECLARE @TopicContent VARCHAR(50) = 'Witamy w Sklepie!';
     DECLARE @BodyContent VARCHAR(MAX) = 
-    'Jeszcze tylko jeden krok i możesz cieszyć się zakupami!'
-    + 'Wystarczy że potwierdzisz swój adres email.'
-    + 'Pozdrawiamy,'
-    + 'Ekipa Twojego Sklepu'
+    'Jeszcze tylko jeden krok i możesz cieszyć się zakupami!' + CHAR(13)
+    + 'Wystarczy że potwierdzisz swój adres email.' + CHAR(13)
+    + 'Pozdrawiamy,' + CHAR(13)
+    + 'Ekipa Twojego Sklepu';
     
     DECLARE c CURSOR
     FOR SELECT [CustomerID] FROM INSERTED
