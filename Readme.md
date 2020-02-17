@@ -17,9 +17,9 @@ Zaprojektuj i zaimplementuj bazę danych służącą do gromadzenia i przetwarza
 - [ ] diagram ER
 - [ ] schemat bazy danych (diagram relacji)
 - [ ] dodatkowe więzy integralności danych (nie zapisane w schemacie)
-- [ ] utworzone indeksy
-- [ ] opis stworzonych widoków
-- [ ] opis procedur składowanych
+- [ ] utworzone indeksy XDDDD
+- [x] opis stworzonych widoków
+- [x] opis procedur składowanych
 - [ ] opis wyzwalaczy
 - [ ] skrypt tworzący bazę danych
 - [ ] typowe zapytania
