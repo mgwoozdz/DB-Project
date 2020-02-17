@@ -35,6 +35,7 @@ PRINT 'Deploying Functions...'
 :r C:\Users\Mateusz\Desktop\DB-Project\FUNC_Product_Bought.sql
 :r C:\Users\Mateusz\Desktop\DB-Project\FUNC_Product_Lookup.sql
 :r C:\Users\Mateusz\Desktop\DB-Project\FUNC_Get_Review_Ratings.sql
+:r C:\Users\Mateusz\Desktop\DB-Project\FUNC_Get_Reviews.sql
 GO
 PRINT 'Functions deployed.
 	'
