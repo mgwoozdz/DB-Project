@@ -164,6 +164,10 @@ CREATE TABLE [dbo].[Products]
         , CONSTRAINT [PK_Products] PRIMARY KEY (ProductID) 
         , [Product Name] NVARCHAR(40) NOT NULL
         , [BrandID] INT NOT NULL
+        , CONSTRAINT [FK_Products_Brands] FOREIGN KEY (BrandID)
+          REFERENCES [dbo].[Brands] (BrandID)
+          ON DELETE CASCADE
+          ON UPDATE CASCADE 
         , [Product Description] NVARCHAR(100)
         , [CategoryID] TINYINT
         , CONSTRAINT [FK_Products_Categories] FOREIGN KEY (CategoryID)
