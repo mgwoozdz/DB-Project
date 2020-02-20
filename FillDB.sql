@@ -28,23 +28,6 @@ PRINT 'Done.'
 GO
 
 
-
-
-   -- INSERT INTO [dbo].[Customers] --name, addresmail, phone, addres, postal code, city
-   -- VALUES
-     -- ('Celina Johansen', 'celinajohansen@gmail.com', '123456789', 'Skarbowa 16', '30-056', 'Krakow')
-    --, ('Cyryl Jensen', 'cJensen@gmail.com', '222333444', 'Lipowa 18/2', '12-819', 'Warszawa' )
-    --, ('Cameron Moller','mollercameron@wp.pl', '367235980', 'Lea 13', '26-600', 'Radom' )
-    --, ('Carolina Moller', 'carolinaMoller@gmail.pl', '379215396', 'Szwedzka 22', '40-432', 'Poznan' )
-    --, ('Cyryl Andersen', 'CyrylAndersen@gmail.com', '92349089', 'Kapelanka 166', '30-252', 'Krakow')
-    --, ('Cataleya Pedersen', 'Cataleya@gmail.com', '23433444', 'Miodowa 44', '12-800', 'Warszawa' )
-    --, ('Chanell Moller', 'MollerChannel@gmail.com', '23412454', 'Kwiatowa 19', '12-600', 'Warszawa' )
-    --, ('Carmen Moller', 'CarmenMoller@gmail.com', '19896764', 'Polna 1', '12-880', 'Warszawa' )
-    --, ('Carla Christiansen', 'carlachris@gmail.com', '334226557', 'Czysta 112', '55-220', 'Gdansk')
-    --, ('Cyprian Moller', 'cyprianMoll@wp.pl', '346747292', 'Kijowska 99','40-222', 'Poznan')
-   -- ;
-    --
-    
 PRINT 'Adding Categories...'
 INSERT INTO [dbo].[Categories] VALUES
   (1, 'Twarz')
