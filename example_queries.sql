@@ -31,11 +31,18 @@ EXEC [dbo].[Generate Note] 3
 EXEC [dbo].[Generate Note] 4
 
 
--- pobranie przez aplikację webową recenzji na temat produktu do zrenderowania strony
+-- pobranie przez aplikację webową recenzji na temat produktu oraz gwiazdek dla recenzji do zrenderowania strony
 SELECT * FROM [dbo].[Get Reviews] 1
+SELECT * FROM [dbo].[Get Review Ratings] 1
+
 SELECT * FROM [dbo].[Get Reviews] 2
+SELECT * FROM [dbo].[Get Review Ratings] 4
+
 SELECT * FROM [dbo].[Get Reviews] 3
+SELECT * FROM [dbo].[Get Review Ratings] 2
+
 SELECT * FROM [dbo].[Get Reviews] 5
+SELECT * FROM [dbo].[Get Review Ratings] 3
 
 
 -- sprawdzanie przez pracowników stanu magazynu
