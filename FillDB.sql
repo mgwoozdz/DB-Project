@@ -14,6 +14,9 @@ GO
 EXEC dbo.AddCustomer @Name = 'Cameron Moller', @Email = 'mollercameron@wp.pl', @PhoneNumber =  '367235980', 
 @Addres = 'Lea 13', @PostalCode = '26-600', @City = 'Radom'
 GO
+EXEC dbo.AddCustomer @Name = 'Cyryl Andersen', @Email = 'candersen@wp.pl', @PhoneNumber =  '456789333', 
+@Addres = 'Wesola 13', @PostalCode = '33-222', @City = 'Katowice'
+GO
 
 PRINT 'Done.'
 GO
@@ -127,6 +130,10 @@ INSERT INTO [dbo].[New Products] VALUES
 , ('Gosh', 'X-CEPTIONAL WEAR', 'kryjący podkład do twarzy w kremie do twarzy, 35 ml', 1, 1, 21, 41.99) 
 , ('Anabelle Minerals', 'GOLDEN FAIREST', 'podkład matujący do twarzy, 4 g', 1, 1, 22, 44.99) 
 , ('Catrice','HD LIQUID COVERAGE', 'podkład do twarzy, 30 ml', 1, 1, 10, 23.19) 
+, ('Eveline', 'Matt Magic Lip Cream', ' pomadka w płynie do ust', 2, 2, 13, 19.99)
+,('Revolution Makeup', 'Iconic Division', 'Paleta cieni do powiek', 3,3, 20, 29.99)
+, ('Eveline', 'Eyebrow Pencil', 'kredka do brwi', 4,1,8, 11.50)
+, ('Glov', 'On the go', 'rękawica do makijażu', 6,1,30, 39.99)
 ;
 PRINT 'Done. 
 '
@@ -162,9 +169,14 @@ GO
 
 PRINT 'Adding Storage...'
 INSERT INTO [dbo].[Storage] VALUES
-  (1, 1000, 1000)
-, (2, 1000, 1000)
-, (3, 1000, 1000)
+  (1, 1000, 100)
+, (2, 1000, 500)
+, (3, 1000, 200)
+, (4, 1000, 300)
+, (5, 1000, 500)
+, (6, 500, 100)
+, (7, 1000, 600)
+, (8, 1000, 200)
 ;
 PRINT 'Done.
 '
@@ -179,23 +191,33 @@ GO
 EXEC dbo.AddToCart @CustomerID = 1, @ProductID = 2, @Quantity = 3
 GO
 
-EXEC dbo.AddToCart @CustomerID = 3, @ProductID = 2, @Quantity = 5
+EXEC dbo.AddToCart @CustomerID = 3, @ProductID = 6, @Quantity = 5
 GO
 
 EXEC dbo.AddToCart @CustomerID = 2, @ProductID = 2, @Quantity = 1
 GO
 
-EXEC dbo.AddToCart @CustomerID = 1, @ProductID = 3, @Quantity = 7
+EXEC dbo.AddToCart @CustomerID = 1, @ProductID = 3, @Quantity = 2
 GO
 
-EXEC dbo.AddToCart @CustomerID = 2, @ProductID = 1, @Quantity = 3
+EXEC dbo.AddToCart @CustomerID = 2, @ProductID = 5, @Quantity = 3
+GO
+
+EXEC dbo.AddToCart @CustomerID = 4, @ProductID = 6, @Quantity = 4
 GO
 
 EXEC dbo.AddToCart @CustomerID = 3, @ProductID = 1, @Quantity = 1
 GO
 
-EXEC dbo.AddToCart @CustomerID = 3, @ProductID = 3, @Quantity = 100
+EXEC dbo.AddToCart @CustomerID = 3, @ProductID = 3, @Quantity = 3
 GO
+
+EXEC dbo.AddToCart @CustomerID = 4, @ProductID = 5, @Quantity = 1
+GO
+
+EXEC dbo.AddToCart @CustomerID = 4, @ProductID = 2, @Quantity = 3
+GO
+
 
 PRINT 'Done.'
 
@@ -209,6 +231,9 @@ GO
 GO*/
 
 PRINT 'Done.'
+
+EXEC dbo.AddToCart @CustomerID = 1, @ProductID = 5, @Quantity = 2
+GO
 
 PRINT 'Adding Reviews ...'
 EXEC dbo.AddReview @CustomerID = 2, @ProductID = 1, @Content = 'Super, Polecam!', @Rating = 5
@@ -224,6 +249,35 @@ PRINT 'Adding Reviews Ratings ...'
 EXEC dbo.AddReviewRating @CustomerID = 1, @ReviewID = 1, @PlusMinus = '+'
 GO
 EXEC dbo.AddReviewRating @CustomerID = 3, @ReviewID = 1, @PlusMinus = '-'
+
+PRINT 'Done.'
+
+PRINT 'Adding some Suppliers ...'
+INSERT INTO dbo.Suppliers VALUES
+('BestCosmetics', 'Polska', 'Warszawa', 'ul. Wesoła 25','05-077', 'bestcosmetics@gmail.com', '561321673' )
+,('MakeUp for you','USA', 'Nowy York', 'Kings Avenue 33', '11-222', 'makeupforyou@mufy.com', '222333444')
+,('Look good','Wielka Brytania', 'Londyn', 'Baker Street 29', '33-123', 'LookingGood@gmail.com', '321765089' )
+;
+PRINT 'Done.'
+
+PRINT 'Adding some Resupplies ...'
+INSERT INTO dbo.Resupplies VALUES
+(3)
+,(2)
+;
+PRINT 'Done.'
+
+PRINT 'Adding some Resupplies Details ...'
+INSERT INTO dbo.[Resupply Details] VALUES 
+(1, 5, 100)
+,(1, 2, 150)
+,(1, 3, 50)
+,(1, 8, 100)
+,(2, 4, 50)
+,(2, 1, 100)
+,(2, 5, 120)
+,(2, 6, 70)
+;
 
 PRINT 'Done.'
 
