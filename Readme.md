@@ -8,20 +8,8 @@ Zaprojektuj i zaimplementuj bazę danych służącą do gromadzenia i przetwarza
 - [x] 10 widoków lub funkcji
 - [x] 5 procedur
 - [x] 5 wyzwalaczy
-- [ ] należy zaprojektować strategię pielęgnacji bazy danych (kopie zapasowe)
-- [ ] można utworzyć dwa programy klienckie: jeden umożliwiający pracę administratorów (użytkowników ze zwiększonymi uprawnieniami), drugi umożliwiający pracę zwykłych użytkowników
+- [x] należy zaprojektować strategię pielęgnacji bazy danych (kopie zapasowe)
+- [x] można utworzyć dwa programy klienckie: jeden umożliwiający pracę administratorów (użytkowników ze zwiększonymi uprawnieniami), drugi umożliwiający pracę zwykłych użytkowników
 
-#### Plik z opisem powinien zawierać: ####
-
-- [ ] podstawowe założenia projektu (cel, główne założenia, możliwości, ograniczenia przyjęte przy projektowaniu)
-- [ ] diagram ER
-- [ ] schemat bazy danych (diagram relacji)
-- [ ] dodatkowe więzy integralności danych (nie zapisane w schemacie)
-- [ ] utworzone indeksy XDDDD
-- [x] opis stworzonych widoków
-- [x] opis procedur składowanych
-- [ ] opis wyzwalaczy
-- [ ] skrypt tworzący bazę danych
-- [ ] typowe zapytania
 
 Po oddaniu opisu projektu odbędzie się obrona. Projekt można wykonywać w grupach maksymalnie trzyosobowych. Temat projektu w ramach grupy powinien być unikalny - o przydziale tematu decyduje prowadzący zajęcia, w decyzji będzie uwzględniona kolejność zgłoszeń (przez e-mail lub osobiście).
