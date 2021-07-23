@@ -1,3 +1,5 @@
+# Opis projektu
+
 Zaprojektuj i zaimplementuj bazę danych służącą do gromadzenia i przetwarzania informacji w wybranym temacie. Kompletny projekt powinien zawierać m.in. diagram ER, diagram relacji (schemat bazy danych), skrypty SQL tworzące wszystkie obiekty bazy danych oraz słowny opis projektu (cel, możliwości, główne założenia). Format opisu: plik PDF lub RTF.
 
 #### Minimalne wymagania dotyczące bazy danych: ####
